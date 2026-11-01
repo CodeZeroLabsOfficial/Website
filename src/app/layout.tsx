@@ -17,9 +17,9 @@ const roboto = Roboto({
 });
 
 export const metadata: Metadata = {
-  title: "Code Zero Labs — Apps that move your business forward",
+  title: "Depesch — Apps that move your business forward",
   description:
-    "Code Zero Labs builds premium mobile and web platforms for chauffeur services, medical clinics, and gyms.",
+    "Depesch builds premium mobile and web platforms for chauffeur services, medical clinics, and gyms.",
 };
 
 export default function RootLayout({

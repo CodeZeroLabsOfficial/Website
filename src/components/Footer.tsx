@@ -1,10 +1,5 @@
 import type { ProductContent } from "@/lib/content";
-
-const others: { label: string; href: string }[] = [
-  { label: "Chauffeur", href: "/chauffeur" },
-  { label: "Clinic", href: "/clinic" },
-  { label: "Gym", href: "/gym" },
-];
+import { Logo } from "@/components/Logo";
 
 export function Footer({ content }: { content: ProductContent }) {
   return (
@@ -12,23 +7,15 @@ export function Footer({ content }: { content: ProductContent }) {
       <div className="mx-auto max-w-[1200px] px-5 md:px-8">
         <div className="flex flex-col justify-between gap-10 md:flex-row">
           <div className="max-w-sm">
-            <div className="flex items-center gap-2.5">
-              <span className="grid h-8 w-8 place-items-center rounded-md bg-accent font-display text-lg font-extrabold text-accent-contrast">
-                0
-              </span>
-              <span className="font-display text-base font-semibold tracking-tight text-white">
-                {content.product}
-              </span>
-            </div>
+            <Logo className="h-8 w-auto" />
             <p className="mt-4 text-base leading-relaxed text-muted">
-              Built by Code Zero Labs — premium mobile and web platforms for
+              Built by Depesch — premium mobile and web platforms for
               modern service businesses.
             </p>
           </div>
 
-          <div className="grid grid-cols-2 gap-10 sm:grid-cols-3">
+          <div className="grid grid-cols-2 gap-10">
             <FooterCol title="Product" links={content.nav} />
-            <FooterCol title="Our apps" links={others} />
             <FooterCol
               title="Company"
               links={[
@@ -41,8 +28,8 @@ export function Footer({ content }: { content: ProductContent }) {
         </div>
 
         <div className="mt-12 flex flex-col items-center justify-between gap-3 border-t border-ink-3/60 pt-7 text-small text-muted md:flex-row">
-          <p>© {new Date().getFullYear()} Code Zero Labs. All rights reserved.</p>
-          <p>Designed &amp; built by Code Zero Labs.</p>
+          <p>© {new Date().getFullYear()} Depesch Limited</p>
+          <p>Designed &amp; built by Depesch.</p>
         </div>
       </div>
     </footer>

@@ -1,4 +1,4 @@
-# Code Zero Labs — Landing
+# Depesch — Landing
 
 Three product landing pages built on one shared design system, inspired by the
 visual language of premium SaaS/hospitality sites (dark charcoal canvas, Jost

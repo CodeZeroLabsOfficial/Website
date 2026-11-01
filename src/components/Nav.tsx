@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import type { ProductContent } from "@/lib/content";
+import { Logo } from "@/components/Logo";
 
 export function Nav({ content }: { content: ProductContent }) {
   const [scrolled, setScrolled] = useState(false);
@@ -23,13 +24,8 @@ export function Nav({ content }: { content: ProductContent }) {
       }`}
     >
       <nav className="mx-auto flex h-18 max-w-[1200px] items-center justify-between px-5 py-4 md:px-8">
-        <a href="#top" className="flex items-center gap-2.5">
-          <span className="grid h-8 w-8 place-items-center rounded-md bg-accent font-display text-lg font-extrabold text-accent-contrast">
-            0
-          </span>
-          <span className="font-display text-base font-semibold tracking-tight text-white">
-            {content.product}
-          </span>
+        <a href="#top" className="flex items-center">
+          <Logo priority className="h-6 w-auto sm:h-8" />
         </a>
 
         <div className="hidden items-center gap-8 md:flex">

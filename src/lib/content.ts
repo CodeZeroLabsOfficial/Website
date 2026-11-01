@@ -75,7 +75,7 @@ export const products: Record<Theme, ProductContent> = {
   chauffeur: {
     theme: "chauffeur",
     slug: "chauffeur",
-    product: "Code Zero Chauffeur",
+    product: "Depesch",
     nav: [
       { label: "Platform", href: "#showcase" },
       { label: "Features", href: "#features" },
@@ -150,7 +150,7 @@ export const products: Record<Theme, ProductContent> = {
       image: "/img/case-chauffeur.jpg",
       eyebrow: "Client story · Noir Executive",
       title: "A door-to-door experience worth remembering",
-      body: "Noir Executive moved their entire fleet onto Code Zero Chauffeur and cut dispatch time in half — while giving every client a seamless, branded journey from curb to destination.",
+      body: "Noir Executive moved their entire fleet onto Depesch and cut dispatch time in half — while giving every client a seamless, branded journey from curb to destination.",
       cta: "Read the story",
     },
     testimonial: {
@@ -161,7 +161,7 @@ export const products: Record<Theme, ProductContent> = {
     },
     cta: {
       title: "Give your clients the ride they expect",
-      subtitle: "See Code Zero Chauffeur in action with a personalized walkthrough.",
+      subtitle: "See Depesch in action with a personalized walkthrough.",
       button: "Book a demo",
     },
   },
@@ -169,7 +169,7 @@ export const products: Record<Theme, ProductContent> = {
   clinic: {
     theme: "clinic",
     slug: "clinic",
-    product: "Code Zero Clinic",
+    product: "Depesch",
     nav: [
       { label: "Platform", href: "#showcase" },
       { label: "Features", href: "#features" },
@@ -255,7 +255,7 @@ export const products: Record<Theme, ProductContent> = {
     },
     cta: {
       title: "Give your patients a calmer experience",
-      subtitle: "See how Code Zero Clinic fits your practice with a quick walkthrough.",
+      subtitle: "See how Depesch fits your practice with a quick walkthrough.",
       button: "Book a demo",
     },
   },
@@ -263,7 +263,7 @@ export const products: Record<Theme, ProductContent> = {
   gym: {
     theme: "gym",
     slug: "gym",
-    product: "Code Zero Gym",
+    product: "Depesch",
     nav: [
       { label: "Platform", href: "#showcase" },
       { label: "Features", href: "#features" },
@@ -349,7 +349,7 @@ export const products: Record<Theme, ProductContent> = {
     },
     cta: {
       title: "Turn members into regulars",
-      subtitle: "Start your free trial and see Code Zero Gym on your floor in a day.",
+      subtitle: "Start your free trial and see Depesch on your floor in a day.",
       button: "Start free trial",
     },
   },
