@@ -47,13 +47,15 @@ export function Nav({ content }: { content: ProductContent }) {
 
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-50 transition-[background-color,border-color,backdrop-filter] duration-300 ${
-        frosted
-          ? "bg-ink/85 backdrop-blur-md border-b border-ink-3/60"
-          : "bg-transparent border-b border-transparent"
+      className={`fixed inset-x-0 top-0 z-50 flex flex-col transition-[background-color,border-color,backdrop-filter,height] duration-300 ${
+        open
+          ? "h-dvh bg-ink"
+          : frosted
+            ? "bg-ink/85 backdrop-blur-md border-b border-ink-3/60"
+            : "bg-transparent border-b border-transparent"
       }`}
     >
-      <nav className="relative mx-auto flex h-16 max-w-[1200px] items-center justify-between px-5 md:h-[72px] md:px-8">
+      <nav className="relative flex h-16 w-full shrink-0 items-center justify-between px-5 md:h-[72px] md:px-8 lg:px-10">
         <button
           type="button"
           aria-label={open ? "Close menu" : "Open menu"}
@@ -123,12 +125,12 @@ export function Nav({ content }: { content: ProductContent }) {
       <div
         inert={!open ? true : undefined}
         aria-hidden={!open}
-        className={`grid transition-[grid-template-rows] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${
+        className={`grid min-h-0 flex-1 transition-[grid-template-rows] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${
           open ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
         }`}
       >
         <div className="overflow-hidden">
-          <div className="mx-auto flex min-h-[calc(50vh-4.5rem)] max-w-[1200px] flex-col justify-between gap-10 px-5 py-8 md:px-8 md:py-10">
+          <div className="flex h-full min-h-[calc(100dvh-4.5rem)] flex-col justify-between gap-10 px-5 py-8 md:px-8 md:py-10 lg:px-10">
             <div className="flex flex-col justify-between gap-10 md:flex-row md:items-start">
               <ul className="flex flex-col gap-3 md:gap-4">
                 {content.nav.map((item) => (

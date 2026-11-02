@@ -3,7 +3,7 @@ import { ProductPage } from "@/components/ProductPage";
 import { products } from "@/lib/content";
 
 export const metadata: Metadata = {
-  title: "Depesch — Luxury travel, dispatched in a single tap",
+  title: "Depesch — Dispatch Management for Chauffeurs",
   description:
     "A white-glove booking and fleet platform for executive car services: real-time dispatch, flight tracking, account billing, and a five-star ride experience.",
 };

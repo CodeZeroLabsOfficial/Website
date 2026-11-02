@@ -25,6 +25,7 @@ export interface ProductContent {
     eyebrow: string;
     title: string;
     highlight: string;
+    rotatingPhrases: string[];
     subtitle: string;
     primaryCta: string;
     secondaryCta: string;
@@ -83,9 +84,14 @@ export const products: Record<Theme, ProductContent> = {
       { label: "How it works", href: "#steps" },
     ],
     hero: {
-      eyebrow: "Professional Chauffeur Platform",
-      title: "Luxury travel, dispatched in",
-      highlight: "a single tap.",
+      eyebrow: "Elevate Every Journey. Own Every Experience.",
+      title: "Dispatch Management for",
+      highlight: "Chauffeurs",
+      rotatingPhrases: [
+        "Chauffeurs",
+        "Airport Transfer",
+        "Limousine Operators",
+      ],
       subtitle:
         "A white-glove booking and fleet platform for executive car services — real-time dispatch, flight tracking, and a ride experience your clients will remember.",
       primaryCta: "Book a demo",
@@ -180,6 +186,7 @@ export const products: Record<Theme, ProductContent> = {
       eyebrow: "Medical Center & GP Clinic Platform",
       title: "Modern care, from booking to",
       highlight: "follow-up.",
+      rotatingPhrases: [],
       subtitle:
         "A calm, secure patient platform for GP clinics and medical centers — online bookings, telehealth, e-scripts, and reminders that reduce no-shows and free up your front desk.",
       primaryCta: "Book a demo",
@@ -274,6 +281,7 @@ export const products: Record<Theme, ProductContent> = {
       eyebrow: "Gym & Fitness Studio Platform",
       title: "Memberships, classes and gains —",
       highlight: "all in one app.",
+      rotatingPhrases: [],
       subtitle:
         "A bold member app and gym management platform — class bookings, memberships, check-ins, and workout tracking that keep your members coming back.",
       primaryCta: "Start free trial",
