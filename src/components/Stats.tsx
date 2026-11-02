@@ -9,7 +9,7 @@ export function Stats({ content }: { content: ProductContent }) {
           {content.stats.map((s) => (
             <RevealItem key={s.label}>
               <div className="h-full bg-ink p-8 text-center md:p-10">
-                <p className="font-display text-[2.75rem] font-bold leading-none text-accent">
+                <p className="font-display text-[2.75rem] font-semibold leading-none text-white">
                   {s.value}
                 </p>
                 <p className="mt-3 text-small uppercase tracking-wide text-muted">

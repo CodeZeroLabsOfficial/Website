@@ -12,7 +12,7 @@ export function TrustStrip({ content }: { content: ProductContent }) {
           {items.map((name, i) => (
             <span
               key={`${name}-${i}`}
-              className="whitespace-nowrap font-display text-xl font-semibold text-mist/55 transition-colors hover:text-accent"
+              className="whitespace-nowrap font-display text-xl font-semibold text-mist/55 transition-colors hover:text-white"
             >
               {name}
             </span>

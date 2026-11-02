@@ -1,19 +1,15 @@
 import type { Metadata } from "next";
-import { Jost, Roboto } from "next/font/google";
+import { Geist, Inter } from "next/font/google";
 import "./globals.css";
 
-const jost = Jost({
-  variable: "--font-display",
+const geist = Geist({
+  variable: "--font-geist",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800"],
-  display: "swap",
 });
 
-const roboto = Roboto({
-  variable: "--font-body",
+const inter = Inter({
+  variable: "--font-inter",
   subsets: ["latin"],
-  weight: ["400", "500", "700"],
-  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -30,7 +26,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${jost.variable} ${roboto.variable} h-full antialiased`}
+      className={`${geist.variable} ${inter.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-ink text-mist font-body">
         {children}

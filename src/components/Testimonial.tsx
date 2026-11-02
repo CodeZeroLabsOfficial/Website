@@ -6,7 +6,7 @@ export function Testimonial({ content }: { content: ProductContent }) {
     <section className="py-24 md:py-32">
       <div className="mx-auto max-w-[920px] px-5 text-center md:px-8">
         <Reveal>
-          <span className="font-display text-7xl leading-none text-accent/30">
+          <span className="font-display text-7xl leading-none text-white/25">
             &ldquo;
           </span>
           <blockquote className="font-display -mt-6 text-[1.75rem] font-medium leading-snug text-white md:text-[2.25rem]">

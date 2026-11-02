@@ -46,8 +46,7 @@ export function Hero({ content }: { content: ProductContent }) {
           {...fade(0.34)}
           className="h-display mx-auto mt-6 max-w-3xl text-[2.85rem] leading-[1.04] sm:text-[4rem] lg:text-[4.75rem]"
         >
-          {content.hero.title}{" "}
-          <span className="text-accent">{content.hero.highlight}</span>
+          {content.hero.title} {content.hero.highlight}
         </motion.h1>
         <motion.p
           {...fade(0.46)}
@@ -79,7 +78,7 @@ export function Hero({ content }: { content: ProductContent }) {
       >
         <span className="flex h-10 w-6 items-start justify-center rounded-full border border-mist/40 p-1.5">
           <motion.span
-            className="h-2 w-1 rounded-full bg-accent"
+            className="h-2 w-1 rounded-full bg-white"
             animate={{ y: [0, 8, 0] }}
             transition={{ duration: 1.6, repeat: Infinity, ease: "easeInOut" }}
           />

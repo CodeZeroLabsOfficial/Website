@@ -40,12 +40,12 @@ export function Showcase({ content }: { content: ProductContent }) {
           <Reveal delay={0.15}>
             <button
               aria-label="Play video"
-              className="group mt-10 grid h-20 w-20 place-items-center rounded-full border border-white/30 backdrop-blur-sm transition-all duration-300 hover:scale-110 hover:border-accent"
+              className="group mt-10 grid h-20 w-20 place-items-center rounded-full border border-white/30 backdrop-blur-sm transition-all duration-300 hover:scale-110 hover:border-white"
             >
-              <span className="absolute h-20 w-20 animate-ping rounded-full border border-accent/40" />
+              <span className="absolute h-20 w-20 animate-ping rounded-full border border-white/40" />
               <svg
                 viewBox="0 0 24 24"
-                className="ml-1 h-7 w-7 fill-white transition-colors group-hover:fill-accent"
+                className="ml-1 h-7 w-7 fill-white"
               >
                 <path d="M8 5v14l11-7z" />
               </svg>
@@ -65,7 +65,7 @@ export function Showcase({ content }: { content: ProductContent }) {
             {content.showcase.bullets.map((b, i) => (
               <Reveal key={b} delay={0.08 * (i + 1)}>
                 <li className="h-full rounded-2xl border border-ink-3/60 bg-ink-2/40 p-5">
-                  <span className="font-display text-3xl font-bold text-accent/40">
+                  <span className="font-display text-3xl font-semibold text-white/40">
                     {String(i + 1).padStart(2, "0")}
                   </span>
                   <p className="mt-2 text-base text-white">{b}</p>

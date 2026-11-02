@@ -2,41 +2,20 @@
 
 /* ----------------------------------------------------------------------------
    Depesch — design system
-   Dark, premium aesthetic: charcoal canvas, gold accent, Jost display + Roboto.
-   A single brand; each product route overrides --accent for differentiation.
+   Dark, warm-neutral aesthetic: near-black canvas, bone paper, Geist + Inter.
 ---------------------------------------------------------------------------- */
 
 :root {
-  /* Core brand palette */
-  --ink: #202123; /* page canvas */
-  --ink-2: #2f3034; /* raised panels */
-  --ink-3: #3f444d; /* borders / hairlines */
-  --mist: #c1c3c9; /* body text */
-  --muted: #81848e; /* secondary text */
-  --white: #fefefe;
+  --ink: #0d0d0d; /* page canvas */
+  --ink-2: #2b2b28; /* raised panels */
+  --ink-3: #51504a; /* borders / hairlines */
+  --mist: #eceee8; /* body text */
+  --muted: #928f86; /* secondary text */
+  --white: #eceee8;
 
-  /* Accent (overridden per product) */
-  --accent: #cf8516;
-  --accent-soft: #895e1b;
-  --accent-contrast: #202123;
-}
-
-[data-theme="chauffeur"] {
-  --accent: #cf8516; /* gold */
-  --accent-soft: #895e1b;
-  --accent-contrast: #202123;
-}
-
-[data-theme="clinic"] {
-  --accent: #36b6a6; /* calm teal */
-  --accent-soft: #1f5f59;
-  --accent-contrast: #06201d;
-}
-
-[data-theme="gym"] {
-  --accent: #c6f24e; /* electric lime */
-  --accent-soft: #6c8a1f;
-  --accent-contrast: #14210a;
+  --accent: #eceee8;
+  --accent-soft: #51504a;
+  --accent-contrast: #0d0d0d;
 }
 
 @theme inline {
@@ -50,10 +29,9 @@
   --color-accent-soft: var(--accent-soft);
   --color-accent-contrast: var(--accent-contrast);
 
-  --font-display: var(--font-display), "Jost", sans-serif;
-  --font-body: var(--font-body), "Roboto", sans-serif;
+  --font-display: var(--font-geist), "Geist", sans-serif;
+  --font-body: var(--font-inter), "Inter", sans-serif;
 
-  /* Type scale lifted from the reference design language */
   --text-eyebrow: 0.8125rem; /* 13px */
   --text-small: 0.875rem; /* 14px */
   --text-base: 1rem; /* 16px */
@@ -87,7 +65,6 @@ body {
   color: var(--accent-contrast);
 }
 
-/* Display headings: Jost, tight, with subtle negative tracking */
 .font-display {
   font-family: var(--font-display);
 }
@@ -98,18 +75,17 @@ body {
   font-size: var(--text-eyebrow);
   letter-spacing: 0.28em;
   text-transform: uppercase;
-  color: var(--accent);
+  color: var(--muted);
 }
 
 .h-display {
   font-family: var(--font-display);
-  font-weight: 700;
+  font-weight: 600;
   line-height: 1.02;
   letter-spacing: -0.02em;
   color: var(--white);
 }
 
-/* Reusable accent button */
 .btn-accent {
   font-family: var(--font-display);
   font-weight: 600;
@@ -135,11 +111,10 @@ body {
   transition: border-color 0.3s ease, color 0.3s ease, background-color 0.3s ease;
 }
 .btn-ghost:hover {
-  border-color: var(--accent);
-  color: var(--accent);
+  border-color: var(--white);
+  color: var(--white);
 }
 
-/* Marquee for the logo / trust strip */
 @keyframes marquee {
   from {
     transform: translateX(0);
@@ -170,11 +145,10 @@ body {
   );
 }
 
-/* Soft radial glow used behind hero / sections */
 .glow {
   background: radial-gradient(
     60% 60% at 50% 0%,
-    color-mix(in srgb, var(--accent) 22%, transparent),
+    color-mix(in srgb, var(--white) 16%, transparent),
     transparent 70%
   );
 }

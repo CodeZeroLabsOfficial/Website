@@ -14,7 +14,7 @@ export function Steps({ content }: { content: ProductContent }) {
           {content.steps.items.map((s, i) => (
             <RevealItem key={s.title}>
               <div className="relative h-full rounded-2xl border border-ink-3/60 bg-ink p-7">
-                <span className="font-display text-5xl font-extrabold text-accent/25">
+                <span className="font-display text-5xl font-semibold text-white/25">
                   {String(i + 1).padStart(2, "0")}
                 </span>
                 <h3 className="font-display mt-3 text-h4 font-semibold text-white">
