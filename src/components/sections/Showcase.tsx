@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { Icon } from "@/components/ui/Icon";
 import { Reveal } from "@/components/ui/Reveal";
-import { SiteInset, SiteMeasure } from "@/components/ui/SiteInset";
+import { SiteInset, SiteMeasure, siteSectionClass } from "@/components/ui/SiteInset";
 import { copy } from "@/content/pages";
 
 export function Showcase() {
@@ -42,7 +42,7 @@ export function Showcase() {
           </Reveal>
         </div>
       </div>
-      <SiteInset className="py-20">
+      <SiteInset className={siteSectionClass}>
         <SiteMeasure>
           <div className="grid gap-10 md:grid-cols-[1fr_1.1fr] md:items-center">
             <Reveal>

@@ -197,8 +197,8 @@ body {
   stroke-width: 2;
 }
 .chip[aria-current="true"] {
-  border-color: color-mix(in srgb, var(--white) 22%, transparent);
-  background: var(--ink-2);
+  border-color: color-mix(in srgb, var(--white) 14%, transparent);
+  background: color-mix(in srgb, var(--ink-2) 55%, var(--ink));
 }
 @media (min-width: 1024px) {
   .chip {

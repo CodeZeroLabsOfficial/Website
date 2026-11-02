@@ -1,12 +1,12 @@
 import Link from "next/link";
 import { DemoButton } from "@/components/demo/DemoButton";
 import { Reveal } from "@/components/ui/Reveal";
-import { SiteInset, SiteMeasure } from "@/components/ui/SiteInset";
+import { SiteInset, SiteMeasure, siteSectionClass } from "@/components/ui/SiteInset";
 import { copy } from "@/content/pages";
 
 export function Cta() {
   return (
-    <section className="relative overflow-hidden py-24 md:py-32">
+    <section className={`relative overflow-hidden ${siteSectionClass}`}>
       <div className="glow pointer-events-none absolute inset-x-0 bottom-0 h-[420px] rotate-180" />
       <SiteInset className="relative">
         <SiteMeasure className="max-w-[920px]">

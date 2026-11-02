@@ -4,7 +4,12 @@ import { useEffect, useRef, useState } from "react";
 import { DeviceFrame } from "@/components/ui/DeviceFrame";
 import { Icon } from "@/components/ui/Icon";
 import { Reveal, RevealItem, RevealStagger } from "@/components/ui/Reveal";
-import { SiteInset, SiteMeasure } from "@/components/ui/SiteInset";
+import {
+  SiteInset,
+  SiteMeasure,
+  siteSectionClass,
+  siteStackClass,
+} from "@/components/ui/SiteInset";
 import { copy } from "@/content/pages";
 
 const pinClass =
@@ -133,9 +138,9 @@ function PersonaBand({
 
 export function PersonaTour() {
   return (
-    <section id="positioning">
+    <section id="positioning" className={`${siteStackClass} ${siteSectionClass}`}>
       {copy.personas.map((persona, index) => (
-        <SiteInset key={persona.eyebrow} className="py-16 lg:py-0">
+        <SiteInset key={persona.eyebrow}>
           <SiteMeasure>
             <PersonaBand
               persona={persona}

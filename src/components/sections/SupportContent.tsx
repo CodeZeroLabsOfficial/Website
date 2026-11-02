@@ -1,12 +1,12 @@
 import { Reveal } from "@/components/ui/Reveal";
-import { SiteInset, SiteMeasure } from "@/components/ui/SiteInset";
+import { SiteInset, SiteMeasure, siteSectionClass } from "@/components/ui/SiteInset";
 import { copy } from "@/content/pages";
 import { SUPPORT_EMAIL } from "@/content/site";
 
 export function SupportContent() {
   const { support } = copy;
   return (
-    <section className="pb-24 pt-32 md:pb-32 md:pt-40">
+    <section className={siteSectionClass}>
       <SiteInset>
         <SiteMeasure className="max-w-[800px]">
           <Reveal>

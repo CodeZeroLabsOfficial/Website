@@ -1,12 +1,12 @@
 import { Reveal, RevealItem, RevealStagger } from "@/components/ui/Reveal";
 import { Icon } from "@/components/ui/Icon";
-import { SiteInset, SiteMeasure } from "@/components/ui/SiteInset";
+import { SiteInset, SiteMeasure, siteSectionClass } from "@/components/ui/SiteInset";
 import { copy } from "@/content/pages";
 
 export function Features() {
   const { features } = copy;
   return (
-    <section id="features" className="bg-ink-2/30 py-24 md:py-32">
+    <section id="features" className={`bg-ink-2/30 ${siteSectionClass}`}>
       <SiteInset>
         <SiteMeasure>
           <Reveal className="mx-auto max-w-2xl text-center">

@@ -8,5 +8,9 @@ export const metadata: Metadata = {
 };
 
 export default function SupportPage() {
-  return <SupportContent />;
+  return (
+    <div className="pt-16 md:pt-[72px]">
+      <SupportContent />
+    </div>
+  );
 }

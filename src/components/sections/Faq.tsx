@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { Reveal } from "@/components/ui/Reveal";
-import { SiteInset, SiteMeasure } from "@/components/ui/SiteInset";
+import { SiteInset, SiteMeasure, siteSectionClass } from "@/components/ui/SiteInset";
 import { copy } from "@/content/pages";
 
 export function Faq() {
@@ -10,7 +10,7 @@ export function Faq() {
   const [open, setOpen] = useState(0);
 
   return (
-    <section id="faq" className="py-24 md:py-32">
+    <section id="faq" className={siteSectionClass}>
       <SiteInset>
         <SiteMeasure>
           <Reveal>
