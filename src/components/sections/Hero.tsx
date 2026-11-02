@@ -41,17 +41,17 @@ export function Hero() {
 
       <div className="relative z-10 mx-auto max-w-5xl px-5 text-center">
         <motion.div {...fade(0.15)} className="flex justify-center">
-          <Logo priority className="h-5 w-auto" />
+          <Logo priority className="h-8 w-auto lg:h-12" />
         </motion.div>
         <motion.p
           {...fade(0.28)}
-          className="mt-6 font-display text-[11px] font-medium uppercase tracking-[0.22em] text-white sm:mt-7 sm:text-xs"
+          className="mt-10 font-display text-[15px] font-semibold uppercase leading-[1.8] tracking-[0.18em] text-white lg:mt-[55px] lg:text-[22px] lg:leading-[45px] lg:tracking-[4px]"
         >
           {hero.eyebrow}
         </motion.p>
         <motion.h1
           {...fade(0.4)}
-          className="mt-3 font-display text-[1.75rem] font-medium uppercase leading-[1.05] tracking-[0.06em] text-white sm:text-4xl lg:text-[3.25rem]"
+          className="mt-0 font-display text-[1.75rem] font-semibold uppercase leading-none tracking-[0.07em] text-white sm:text-4xl lg:text-[55px] lg:leading-[56px] lg:tracking-[4px]"
         >
           {hero.title}
         </motion.h1>

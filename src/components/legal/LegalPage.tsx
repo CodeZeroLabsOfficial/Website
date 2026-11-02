@@ -9,13 +9,13 @@ import type {
   LegalListItem,
 } from "@/content/legal/types";
 
-const bodyClass = "mt-4 text-[1.25rem] leading-[1.6] text-mist";
+const bodyClass = "mt-4 text-[20px] leading-[26px] tracking-[-0.03em] text-mist";
 
 export function LegalPage({ document }: { document: LegalDocument }) {
   return (
     <SiteMeasure className="max-w-[1320px]">
-      <SiteInset as="article" className="w-full pb-[7.5rem] pt-[12.5rem]">
-        <h1 className="max-w-[800px] font-display text-[2.5rem] font-medium uppercase leading-none tracking-[-0.04em] text-white sm:text-5xl lg:text-[5rem]">
+      <SiteInset as="article" className="w-full pb-[7.5rem] pt-[150px] md:pt-[180px] xl:pt-[200px]">
+        <h1 className="font-display text-[2.5rem] font-medium uppercase leading-none tracking-[-0.04em] text-white sm:text-5xl lg:whitespace-nowrap lg:text-[80px] lg:leading-[80px]">
           {document.title}
         </h1>
         <div className="mt-16 grid gap-10 md:grid-cols-[300px_minmax(0,800px)] md:gap-x-3">
@@ -24,7 +24,7 @@ export function LegalPage({ document }: { document: LegalDocument }) {
             <p className="mt-1 text-xs text-white">{legalEntity.updated}</p>
           </aside>
           <div>
-            <p className="font-display text-xl font-medium leading-[1.2] tracking-[-0.02em] text-white sm:text-[2rem]">
+            <p className="font-display text-xl font-medium leading-[1.2] tracking-[-0.02em] text-white sm:text-[32px] sm:leading-[38.4px] sm:tracking-[-0.02em]">
               {document.lead}
             </p>
             {document.preface?.map((paragraph) => (
