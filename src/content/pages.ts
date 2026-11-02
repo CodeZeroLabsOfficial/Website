@@ -27,7 +27,7 @@ export const copy = {
   personas: [
     {
       eyebrow: "For Passengers",
-      title: "Luxury at your fingertips.",
+      title: "Luxury at\nyour fingertips.",
       body: "Become the leading luxury operator with a fully branded & customised app.",
       items: [
         {
@@ -59,7 +59,7 @@ export const copy = {
     },
     {
       eyebrow: "For Dispatch & Drivers",
-      title: "Operational chaos. Handled forever.",
+      title: "Operational chaos.\nHandled forever.",
       body: "Bookings, replies, reminders & reschedules. Let your drivers focus on the ride.",
       items: [
         {

@@ -11,7 +11,7 @@ export function Cta() {
       <SiteInset className="relative">
         <SiteMeasure className="max-w-[920px]">
           <Reveal className="overflow-hidden rounded-3xl border border-ink-3/60 bg-ink-2/60 p-10 text-center md:p-16">
-            <h2 className="h-display text-h1">{copy.cta.title}</h2>
+            <h2 className="h-display text-h2">{copy.cta.title}</h2>
             <p className="mx-auto mt-5 max-w-xl text-lead leading-relaxed text-mist">
               {copy.cta.subtitle}
             </p>

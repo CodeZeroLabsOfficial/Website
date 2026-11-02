@@ -11,7 +11,7 @@ export function SupportContent() {
         <SiteMeasure className="max-w-[800px]">
           <Reveal>
             <p className="eyebrow">{support.eyebrow}</p>
-            <h1 className="h-display mt-4 text-h1">{support.title}</h1>
+            <h1 className="h-display mt-4 text-h2">{support.title}</h1>
             <p className="mt-5 max-w-xl text-lead leading-relaxed text-mist">
               {support.body}
             </p>

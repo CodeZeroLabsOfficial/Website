@@ -24,7 +24,7 @@ export function Showcase() {
         <div className="relative z-10 mx-auto flex h-full max-w-[1200px] flex-col items-center justify-center px-5 text-center">
           <Reveal>
             <p className="eyebrow">{showcase.eyebrow}</p>
-            <h2 className="h-display mx-auto mt-5 max-w-3xl text-h1">
+            <h2 className="h-display mx-auto mt-5 max-w-3xl text-h2">
               {showcase.title}
             </h2>
           </Reveal>

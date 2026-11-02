@@ -14,12 +14,8 @@ export function Faq() {
       <SiteInset>
         <SiteMeasure>
           <Reveal>
-            <p className="font-display text-base font-medium text-muted">
-              {faq.eyebrow}
-            </p>
-            <h2 className="h-display mt-3 text-h1 sm:text-[3.5rem]">
-              {faq.title}
-            </h2>
+            <p className="eyebrow">{faq.eyebrow}</p>
+            <h2 className="h-display mt-3 text-h2">{faq.title}</h2>
           </Reveal>
           <div className="mt-12 divide-y divide-ink-3/60 border-y border-ink-3/60">
             {faq.items.map((item, index) => {

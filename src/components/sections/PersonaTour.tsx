@@ -41,9 +41,16 @@ function FramePreview({ item }: { item: Item }) {
   );
 }
 
-function PersonaBand({ persona }: { persona: Persona }) {
+function PersonaBand({
+  persona,
+  pin = "start",
+}: {
+  persona: Persona;
+  pin?: "start" | "end";
+}) {
   const [active, setActive] = useState(0);
   const framesRef = useRef<HTMLDivElement>(null);
+  const pinEnd = pin === "end";
 
   useEffect(() => {
     const root = framesRef.current;
@@ -74,35 +81,46 @@ function PersonaBand({ persona }: { persona: Persona }) {
   }, []);
 
   return (
-    <div className="lg:grid lg:grid-cols-[minmax(0,23.375rem)_minmax(0,1fr)] lg:gap-x-16">
-      <div className={pinClass}>
+    <div
+      className={
+        pinEnd
+          ? "lg:grid lg:grid-cols-[minmax(0,1fr)_minmax(0,36rem)] lg:gap-x-16"
+          : "lg:grid lg:grid-cols-[minmax(0,36rem)_minmax(0,1fr)] lg:gap-x-16"
+      }
+    >
+      <div
+        className={`${pinClass} ${pinEnd ? "lg:col-start-2 lg:row-start-1" : ""}`}
+      >
         <Reveal>
-          <p className="flex items-center gap-2 font-display text-base font-medium text-muted">
+          <p className="flex items-center gap-2 font-display text-base font-semibold uppercase tracking-[0.12em] text-muted">
             <span className="pulse-dot" aria-hidden="true" />
             {persona.eyebrow}
           </p>
-          <h2 className="h-display mt-4 max-w-md text-[2rem] sm:text-[2.75rem] lg:text-[3.5rem] lg:leading-[1.05]">
+          <h2 className="h-display mt-4 whitespace-pre-line text-h2">
             {persona.title}
           </h2>
-          <p className="mt-4 max-w-md text-base leading-relaxed text-muted">
+          <p className="mt-4 max-w-[350px] text-base leading-6 text-muted">
             {persona.body}
           </p>
         </Reveal>
-        <RevealStagger className="mt-8 flex flex-col gap-3" stagger={0.1}>
+        <RevealStagger className="mt-6 flex flex-col gap-3" stagger={0.1}>
           {persona.items.map((item, index) => (
             <RevealItem key={item.label} open className="overflow-hidden">
               <div
                 className="chip"
                 aria-current={active === index ? "true" : undefined}
               >
-                <Icon name={item.icon} className="h-6 w-6 shrink-0 text-muted" />
+                <Icon name={item.icon} className="h-6 w-6 shrink-0" />
                 {item.label}
               </div>
             </RevealItem>
           ))}
         </RevealStagger>
       </div>
-      <div ref={framesRef}>
+      <div
+        ref={framesRef}
+        className={pinEnd ? "lg:col-start-1 lg:row-start-1" : ""}
+      >
         {persona.items.map((item, index) => (
           <div key={item.label} data-frame={index} className={frameClass}>
             <FramePreview item={item} />
@@ -116,10 +134,13 @@ function PersonaBand({ persona }: { persona: Persona }) {
 export function PersonaTour() {
   return (
     <section id="positioning">
-      {copy.personas.map((persona) => (
+      {copy.personas.map((persona, index) => (
         <SiteInset key={persona.eyebrow} className="py-16 lg:py-0">
           <SiteMeasure>
-            <PersonaBand persona={persona} />
+            <PersonaBand
+              persona={persona}
+              pin={index % 2 === 1 ? "end" : "start"}
+            />
           </SiteMeasure>
         </SiteInset>
       ))}
