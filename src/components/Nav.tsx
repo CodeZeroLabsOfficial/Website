@@ -47,9 +47,9 @@ export function Nav({ content }: { content: ProductContent }) {
 
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-50 flex flex-col transition-[background-color,border-color,backdrop-filter,height] duration-300 ${
+      className={`fixed inset-x-0 top-0 z-50 transition-[background-color,border-color,backdrop-filter] duration-300 ${
         open
-          ? "h-dvh bg-ink"
+          ? "bg-ink"
           : frosted
             ? "bg-ink/85 backdrop-blur-md border-b border-ink-3/60"
             : "bg-transparent border-b border-transparent"
@@ -79,7 +79,9 @@ export function Nav({ content }: { content: ProductContent }) {
               }`}
             />
           </span>
-          <span className={linkClass}>Menu</span>
+          <span className="font-display text-[12px] font-medium uppercase tracking-[0.14em] text-white">
+            Menu
+          </span>
         </button>
 
         <a
@@ -125,34 +127,25 @@ export function Nav({ content }: { content: ProductContent }) {
       <div
         inert={!open ? true : undefined}
         aria-hidden={!open}
-        className={`grid min-h-0 flex-1 transition-[grid-template-rows] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${
+        className={`grid transition-[grid-template-rows] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${
           open ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
         }`}
       >
         <div className="overflow-hidden">
-          <div className="flex h-full min-h-[calc(100dvh-4.5rem)] flex-col justify-between gap-10 px-5 py-8 md:px-8 md:py-10 lg:px-10">
-            <div className="flex flex-col justify-between gap-10 md:flex-row md:items-start">
-              <ul className="flex flex-col gap-3 md:gap-4">
-                {content.nav.map((item) => (
-                  <li key={item.href}>
-                    <a
-                      href={item.href}
-                      onClick={close}
-                      className="font-display text-[2rem] font-medium leading-none tracking-tight text-white transition-opacity hover:opacity-60 sm:text-[2.5rem]"
-                    >
-                      {item.label}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-              <a
-                href="#cta"
-                onClick={close}
-                className="btn-accent self-start rounded-full px-6 py-3 text-sm"
-              >
-                Request a Demo
-              </a>
-            </div>
+          <div className="flex flex-col gap-10 px-5 py-8 md:px-8 md:py-10 lg:px-10">
+            <ul className="flex flex-col gap-3 md:gap-4">
+              {content.nav.map((item) => (
+                <li key={item.href}>
+                  <a
+                    href={item.href}
+                    onClick={close}
+                    className="font-display text-[2rem] font-medium leading-none tracking-tight text-white transition-opacity hover:opacity-60 sm:text-[2.5rem]"
+                  >
+                    {item.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
 
             <div className="flex flex-col justify-between gap-6 border-t border-ink-3/60 pt-6 sm:flex-row sm:items-end">
               <div>
