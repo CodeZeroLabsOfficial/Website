@@ -1,9 +1,8 @@
 "use client";
 
-import { useEffect, useState, type FormEvent } from "react";
+import { useEffect, useState, type FormEvent, type ReactNode } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
-import { useDemo } from "@/components/DemoProvider";
-import { lockScroll, unlockScroll } from "@/lib/scroll-lock";
+import { useDemo } from "@/components/demo/DemoProvider";
 import {
   accountingTools,
   amenities,
@@ -14,7 +13,8 @@ import {
   flightDataTools,
   roles,
   segments,
-} from "@/lib/site";
+} from "@/content/demo";
+import { lockScroll, unlockScroll } from "@/lib/scroll-lock";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 
@@ -153,6 +153,7 @@ export function DemoOverlay() {
                           setForm((f) => ({ ...f, segment: item.id }));
                         }}
                         label={item.label}
+                        icon={<SegmentIcon name={item.icon} />}
                       />
                     ))}
                   </div>
@@ -414,26 +415,78 @@ function SelectField({
   );
 }
 
+function SegmentIcon({ name }: { name: (typeof segments)[number]["icon"] }) {
+  const paths = {
+    sedan: (
+      <>
+        <path d="M3.5 15h17" />
+        <path d="M5 15 7.2 9.8A1.8 1.8 0 0 1 8.8 8.8h6.6a1.8 1.8 0 0 1 1.6 1L19.2 15" />
+        <circle cx="8.2" cy="15" r="1.75" />
+        <circle cx="16.2" cy="15" r="1.75" />
+        <path d="M10.8 8.9v6.1M14.5 8.9v6.1" />
+        <path d="M3.5 15v1.4M20.5 15v1.4" />
+      </>
+    ),
+    plane: (
+      <>
+        <path d="M21 16v-2l-8-5V3.5a1.5 1.5 0 0 0-3 0V9L2 14v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5L21 16z" />
+      </>
+    ),
+    limo: (
+      <>
+        <path d="M2 15h20" />
+        <path d="M3.5 15 4.8 10.5A1.4 1.4 0 0 1 6.1 9.5h11.8a1.4 1.4 0 0 1 1.3 1L20.5 15" />
+        <circle cx="6.5" cy="15" r="1.5" />
+        <circle cx="17.5" cy="15" r="1.5" />
+        <path d="M8.2 9.5v5.5M12 9.5v5.5M15.6 9.5v5.5" />
+        <path d="M2 15v1.3M22 15v1.3" />
+      </>
+    ),
+  };
+
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={1.4}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className="h-14 w-14"
+      aria-hidden
+    >
+      {paths[name]}
+    </svg>
+  );
+}
+
 function ChoiceCard({
   selected,
   onClick,
   label,
+  icon,
 }: {
   selected: boolean;
   onClick: () => void;
   label: string;
+  icon?: ReactNode;
 }) {
   return (
     <button
       type="button"
       onClick={onClick}
-      className={`flex min-h-[104px] items-center justify-center rounded-xl border px-4 py-6 text-center text-sm text-white transition-colors ${
+      className={`flex items-center justify-center rounded-xl border px-4 text-center text-sm text-white transition-colors ${
+        icon
+          ? "min-h-[180px] flex-col gap-4 py-8"
+          : "min-h-[104px] py-6"
+      } ${
         selected
           ? "border-white bg-white/5"
           : "border-ink-3 hover:border-white/50"
       }`}
     >
-      {label}
+      {icon}
+      <span className="leading-snug">{label}</span>
     </button>
   );
 }

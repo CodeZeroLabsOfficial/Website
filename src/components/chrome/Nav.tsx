@@ -3,10 +3,11 @@
 import { useEffect, useState, type MouseEvent } from "react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import { Logo } from "@/components/Logo";
-import { DemoButton } from "@/components/DemoButton";
+import { Logo } from "@/components/chrome/Logo";
+import { DemoButton } from "@/components/demo/DemoButton";
+import { siteInsetClass } from "@/components/ui/SiteInset";
+import { LOGIN_URL, SUPPORT_EMAIL, legalNav, siteNav } from "@/content/site";
 import { lockScroll, unlockScroll } from "@/lib/scroll-lock";
-import { LOGIN_URL, SUPPORT_EMAIL, legalNav, siteNav } from "@/lib/site";
 
 const linkClass =
   "font-display text-[12px] font-medium uppercase tracking-[0.14em] text-white transition-opacity duration-300 hover:opacity-60";
@@ -58,7 +59,6 @@ export function Nav() {
     return () => unlockScroll();
   }, [open]);
 
-  const close = () => setOpen(false);
   const showLogo = !isHome || scrolled;
   const frosted = open || scrolled || !isHome;
 
@@ -83,7 +83,7 @@ export function Nav() {
             : "bg-transparent border-b border-transparent"
       }`}
     >
-      <nav className="relative flex h-16 w-full shrink-0 items-center justify-between px-5 md:h-[72px] md:px-8 lg:px-10">
+      <nav className={`relative flex h-16 w-full shrink-0 items-center justify-between md:h-[72px] ${siteInsetClass}`}>
         <button
           type="button"
           aria-label={open ? "Close menu" : "Open menu"}
@@ -161,7 +161,7 @@ export function Nav() {
         }`}
       >
         <div className="overflow-hidden">
-          <div className="flex flex-col gap-10 px-5 py-8 md:px-8 md:py-10 lg:px-10">
+          <div className={`flex flex-col gap-10 py-8 md:py-10 ${siteInsetClass}`}>
             <ul className="flex flex-col gap-3 md:gap-4">
               {siteNav.map((item) => (
                 <li key={item.href}>

@@ -1,17 +1,12 @@
 import type { Metadata } from "next";
-import { LegalArticle } from "@/components/legal/LegalArticle";
-import { PrivacyContent, PrivacyIntro } from "@/components/legal/PrivacyContent";
+import { LegalPage } from "@/components/legal/LegalPage";
+import { privacyPolicy } from "@/content/legal/privacyPolicy";
 
 export const metadata: Metadata = {
-  title: "Privacy Policy — Depesch",
-  description:
-    "How Depesch Limited collects, uses and protects personal information.",
+  title: `${privacyPolicy.title} — Depesch`,
+  description: privacyPolicy.description,
 };
 
 export default function PrivacyPolicyPage() {
-  return (
-    <LegalArticle title="Privacy Policy" intro={<PrivacyIntro />}>
-      <PrivacyContent />
-    </LegalArticle>
-  );
+  return <LegalPage document={privacyPolicy} />;
 }

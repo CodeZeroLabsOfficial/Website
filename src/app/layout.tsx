@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Inter } from "next/font/google";
-import { AppShell } from "@/components/AppShell";
+import { AppShell } from "@/components/chrome/AppShell";
+import { meta } from "@/content/pages";
 import "./globals.css";
 
 const geist = Geist({
@@ -14,9 +15,8 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Depesch — Dispatch Management for Chauffeurs",
-  description:
-    "A white-glove booking and fleet platform for executive car services: real-time dispatch, flight tracking, account billing, and a five-star ride experience.",
+  title: meta.home.title,
+  description: meta.home.description,
 };
 
 export default function RootLayout({

@@ -1,17 +1,12 @@
 import type { Metadata } from "next";
-import { LegalArticle } from "@/components/legal/LegalArticle";
-import { TermsContent, TermsIntro } from "@/components/legal/TermsContent";
+import { LegalPage } from "@/components/legal/LegalPage";
+import { termsOfService } from "@/content/legal/termsOfService";
 
 export const metadata: Metadata = {
-  title: "Terms of Service — Depesch",
-  description:
-    "Terms governing access to and use of the Depesch platform provided by Depesch Limited.",
+  title: `${termsOfService.title} — Depesch`,
+  description: termsOfService.description,
 };
 
 export default function TermsOfServicePage() {
-  return (
-    <LegalArticle title="Terms of Service" intro={<TermsIntro />}>
-      <TermsContent />
-    </LegalArticle>
-  );
+  return <LegalPage document={termsOfService} />;
 }

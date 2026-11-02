@@ -1,25 +1,18 @@
 import type { Metadata } from "next";
-import { Features } from "@/components/Features";
-import { CTA } from "@/components/CTA";
-import { Footer } from "@/components/Footer";
-import { products } from "@/lib/content";
-
-const content = products.chauffeur;
+import { Cta } from "@/components/sections/Cta";
+import { Features } from "@/components/sections/Features";
+import { meta } from "@/content/pages";
 
 export const metadata: Metadata = {
-  title: "Features — Depesch",
-  description:
-    "Dispatch, flight tracking, account billing, and a five-star ride experience — everything operators and chauffeurs need in one platform.",
+  title: meta.features.title,
+  description: meta.features.description,
 };
 
 export default function FeaturesPage() {
   return (
-    <>
-      <div className="pt-16 md:pt-[72px]">
-        <Features content={content} />
-        <CTA content={content} />
-      </div>
-      <Footer />
-    </>
+    <div className="pt-16 md:pt-[72px]">
+      <Features />
+      <Cta />
+    </div>
   );
 }

@@ -1,0 +1,45 @@
+---
+description: Folder layout, ownership, and naming for this marketing site
+alwaysApply: true
+---
+
+# Project structure
+
+This is a single-product marketing site. Keep it small.
+
+| Folder | Owns |
+|---|---|
+| `src/app/` | Routes and metadata only |
+| `src/components/chrome/` | Persistent shell: AppShell, Nav, Footer, PageTransition, Logo |
+| `src/components/demo/` | Request-a-demo overlay |
+| `src/components/legal/` | `LegalPage` document template |
+| `src/components/sections/` | Page blocks (Hero, Features, Cta, …) |
+| `src/components/ui/` | Primitives with no page knowledge |
+| `src/content/` | All copy, nav, URLs, form options |
+| `src/lib/` | Non-UI behavior only |
+
+Pages compose sections. They do not mount Nav/Footer, set page padding, or embed copy.
+
+```tsx
+// ✅
+export default function HomePage() {
+  return (
+    <>
+      <Hero />
+      <PositioningBand />
+    </>
+  );
+}
+
+// ❌
+export default function HomePage() {
+  return (
+    <div className="px-5 pt-32">
+      <h1>Software for Luxury Fleets</h1>
+      <Footer />
+    </div>
+  );
+}
+```
+
+Naming: component file = export (`LegalPage.tsx`). Data files camelCase (`privacyPolicy.ts`). Routes kebab-case. Do not add `src/features/`, barrels, or unused product/theme leftovers.

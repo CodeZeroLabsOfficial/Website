@@ -1,7 +1,7 @@
 "use client";
 
 import type { ReactNode } from "react";
-import { useDemo } from "@/components/DemoProvider";
+import { useDemo } from "@/components/demo/DemoProvider";
 
 export function DemoButton({
   className,

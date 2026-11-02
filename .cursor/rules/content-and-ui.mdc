@@ -1,0 +1,16 @@
+---
+description: Copy lives in content/; shared inset and labels; no competitor names
+alwaysApply: true
+---
+
+# Content and UI
+
+Copy, URLs, entity details, nav, FAQs, and form options live in `src/content/`. Components render that data. Do not hardcode ACN, support email, login URL, or legal body copy in JSX.
+
+Legal documents are data (`src/content/legal/`) rendered by `LegalPage`. Do not add `LegalH2` / `LegalP` public helpers. Change title size, grid, or meta rail in `LegalPage` only.
+
+Horizontal padding is `siteInsetClass` from `src/components/ui/SiteInset.tsx` (`px-5 md:px-8 lg:px-10`). Use `SiteInset` / `SiteMeasure` instead of repeating those classes.
+
+Nav/menu/CTA labels stay uppercase (`Request a Demo`, `Log in`, `Menu`). Do not mention third-party reference sites in code, comments, or commit messages.
+
+Delete unused components and copy when a page no longer needs them. Do not keep clinic/gym/multi-product scaffolding.
