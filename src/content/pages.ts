@@ -24,17 +24,132 @@ export const copy = {
     title: "Software for Luxury Fleets",
     image: "/img/hero-chauffeur.jpg",
   },
-  positioning:
-    "Dispatch, fleet management and a five-star ride experience — in one platform.",
-  trust: {
-    label: "Trusted by premium fleets and concierge teams",
+  personas: [
+    {
+      eyebrow: "For Passengers",
+      title: "Luxury at your fingertips.",
+      body: "Become the leading luxury operator with a fully branded & customised app.",
+      items: [
+        {
+          label: "Elegant, fully branded customer app",
+          frame: "Branded app",
+          icon: "device" as IconName,
+        },
+        {
+          label: "Seamless booking and instant payments",
+          frame: "Booking",
+          icon: "calendar" as IconName,
+        },
+        {
+          label: "Live GPS tracking with ETA updates",
+          frame: "Live tracking",
+          icon: "globe" as IconName,
+        },
+        {
+          label: "In-app messaging with your driver",
+          frame: "Messaging",
+          icon: "chat" as IconName,
+        },
+        {
+          label: "Loyalty rewards and saved preferences",
+          frame: "Loyalty",
+          icon: "award" as IconName,
+        },
+      ],
+    },
+    {
+      eyebrow: "For Dispatch & Drivers",
+      title: "Operational chaos. Handled forever.",
+      body: "Bookings, replies, reminders & reschedules. Let your drivers focus on the ride.",
+      items: [
+        {
+          label: "Dedicated Driver app with navigation & job management",
+          frame: "Driver app",
+          icon: "device" as IconName,
+        },
+        {
+          label: "Automated dispatching and notifications",
+          frame: "Dispatch",
+          icon: "refresh" as IconName,
+        },
+        {
+          label: "Intelligent fleet management",
+          frame: "Fleet",
+          icon: "stack" as IconName,
+        },
+        {
+          label: "Automated invoicing, payments & instant payouts",
+          frame: "Invoicing",
+          icon: "file" as IconName,
+        },
+        {
+          label: "Dynamic trip pricing configuration",
+          frame: "Pricing",
+          icon: "currency" as IconName,
+        },
+      ],
+    },
+  ],
+  showcase: {
+    eyebrow: "A day in the life of your client",
+    title: "Every journey, perfectly orchestrated",
+    playLabel: "Play video",
+    image: "/img/showcase-chauffeur.jpg",
+    body: "From the airport curb to the boardroom, your clients move through a seamless, branded experience while your dispatch team keeps the whole fleet in view.",
+    bullets: [
+      "Live driver ETA and in-app chat",
+      "Automatic flight tracking and curb-side timing",
+      "Branded receipts and account billing",
+    ],
+  },
+  testimonials: [
+    {
+      quote:
+        "We replaced three tools with one platform. Dispatch is faster, drivers are happier, and our corporate clients finally have billing that just works.",
+      author: "Daniela Rossi",
+      role: "Operations Director, Noir Executive",
+    },
+    {
+      quote:
+        "Depesch enabled me to establish a very competent app for my chauffeur business.",
+      author: "Priya R.",
+      role: "Owner Operator, Meridian Cars",
+    },
+    {
+      quote:
+        "I made a list of features I wanted and Depesch had most of them — and definitely had more than the others.",
+      author: "Marcus T.",
+      role: "CEO, Atlas Private",
+    },
+  ],
+  faq: {
+    eyebrow: "FAQs",
+    title: "Frequently Asked Questions",
     items: [
-      "Meridian Cars",
-      "Noir Executive",
-      "Atlas Private",
-      "Halcyon Travel",
-      "Crown & Co.",
-      "Vantage Fleet",
+      {
+        q: "What features are included in the platform?",
+        a: "Passenger booking with vehicle class, pricing, and tracking; a driver app for jobs, navigation, and status; a dispatch dashboard; realtime GPS; payments and invoicing; notifications; reporting; and integrations with calendars or accounting tools.",
+      },
+      {
+        q: "How is it different from off-the-shelf platforms?",
+        a: "Depesch is built for chauffeur and limo operators: fully branded passenger and driver apps, dispatch, compliance, and payments in one platform — not a generic booking tool with a luxury sticker.",
+      },
+      {
+        q: "How much will it cost?",
+        a: "Pricing is scoped to your fleet. Request a Demo and we will walk through a plan that fits how you operate.",
+      },
+      {
+        q: "Are there any variable or hidden costs?",
+        a: "No per-trip or per-booking fees. Usage is included in the plan we agree with you.",
+      },
+      {
+        q: "How can this platform help my business?",
+        a: "It puts a branded client app, driver tools, and dispatch in one place so you can compete with app-based services without stitching together add-ons.",
+      },
+      {
+        q: "What can't it do yet?",
+        a: "Some deeper workflow and dashboard customisations are still on the roadmap. Request a Demo and we will be clear about what ships today.",
+      },
     ],
   },
   features: {

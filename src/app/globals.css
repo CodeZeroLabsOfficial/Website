@@ -128,21 +128,8 @@ body {
   width: max-content;
   animation: marquee 26s linear infinite;
 }
-.marquee-mask {
-  -webkit-mask-image: linear-gradient(
-    to right,
-    transparent,
-    #000 12%,
-    #000 88%,
-    transparent
-  );
-  mask-image: linear-gradient(
-    to right,
-    transparent,
-    #000 12%,
-    #000 88%,
-    transparent
-  );
+.marquee-slow {
+  animation-duration: 56s;
 }
 
 .glow {
@@ -153,11 +140,85 @@ body {
   );
 }
 
+.chip {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  height: 3.5rem;
+  width: 100%;
+  max-width: 23.375rem;
+  padding: 1rem 1.25rem;
+  border: 1px solid color-mix(in srgb, var(--white) 12%, transparent);
+  border-radius: 0.75rem;
+  background: var(--ink);
+  color: var(--white);
+  font-family: var(--font-display);
+  font-size: var(--text-base);
+  font-weight: 500;
+  line-height: 1.2;
+  text-align: left;
+  cursor: pointer;
+  transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+.chip[aria-current="true"] {
+  border-color: color-mix(in srgb, var(--white) 28%, transparent);
+  background: var(--ink-2);
+}
+
+@keyframes pulse-ring {
+  0% {
+    transform: scale(0.7);
+    opacity: 0.5;
+  }
+  100% {
+    transform: scale(1.8);
+    opacity: 0;
+  }
+}
+
+.pulse-dot {
+  position: relative;
+  display: inline-flex;
+  height: 8px;
+  width: 8px;
+  flex-shrink: 0;
+}
+.pulse-dot::before,
+.pulse-dot::after {
+  content: "";
+  border-radius: 999px;
+  background: var(--muted);
+}
+.pulse-dot::before {
+  position: absolute;
+  inset: 0;
+  animation: pulse-ring 1.8s ease-out infinite;
+}
+.pulse-dot::after {
+  position: relative;
+  height: 8px;
+  width: 8px;
+}
+
+.play-pulse {
+  position: relative;
+}
+.play-pulse::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 999px;
+  border: 1px solid color-mix(in srgb, var(--white) 40%, transparent);
+  animation: pulse-ring 1.8s ease-out infinite;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
   }
-  .marquee-track {
+  .marquee-track,
+  .pulse-dot::before,
+  .play-pulse::before {
     animation: none;
   }
 }

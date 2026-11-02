@@ -58,17 +58,27 @@ export function RevealItem({
   children,
   className,
   y = 24,
+  open = false,
 }: {
   children: ReactNode;
   className?: string;
   y?: number;
+  open?: boolean;
 }) {
   return (
     <motion.div
       className={className}
+      style={open ? { perspective: 700 } : undefined}
       variants={{
-        hidden: { opacity: 0, y },
-        show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: EASE } },
+        hidden: open
+          ? { opacity: 0, y: 20, rotateX: 8 }
+          : { opacity: 0, y },
+        show: {
+          opacity: 1,
+          y: 0,
+          rotateX: 0,
+          transition: { duration: open ? 0.55 : 0.6, ease: EASE },
+        },
       }}
     >
       {children}
