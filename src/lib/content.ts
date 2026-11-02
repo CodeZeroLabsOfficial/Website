@@ -78,10 +78,9 @@ export const products: Record<Theme, ProductContent> = {
     slug: "chauffeur",
     product: "Depesch",
     nav: [
-      { label: "Platform", href: "#showcase" },
-      { label: "Features", href: "#features" },
-      { label: "Results", href: "#stats" },
-      { label: "How it works", href: "#steps" },
+      { label: "Home", href: "/" },
+      { label: "Features", href: "/features" },
+      { label: "Support", href: "/support" },
     ],
     hero: {
       eyebrow: "Elevate Every Journey. Own Every Experience.",

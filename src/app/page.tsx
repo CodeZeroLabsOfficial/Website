@@ -1,6 +1,12 @@
 import type { Metadata } from "next";
-import { ProductPage } from "@/components/ProductPage";
+import { Hero } from "@/components/Hero";
+import { PositioningBand } from "@/components/PositioningBand";
+import { TrustStrip } from "@/components/TrustStrip";
+import { CTA } from "@/components/CTA";
+import { Footer } from "@/components/Footer";
 import { products } from "@/lib/content";
+
+const content = products.chauffeur;
 
 export const metadata: Metadata = {
   title: "Depesch — Dispatch Management for Chauffeurs",
@@ -9,5 +15,13 @@ export const metadata: Metadata = {
 };
 
 export default function Home() {
-  return <ProductPage content={products.chauffeur} />;
+  return (
+    <>
+      <Hero content={content} />
+      <PositioningBand content={content} />
+      <TrustStrip content={content} />
+      <CTA content={content} />
+      <Footer />
+    </>
+  );
 }

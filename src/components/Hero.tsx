@@ -84,7 +84,7 @@ export function Hero({ content }: { content: ProductContent }) {
 
       <div className="relative z-10 mx-auto max-w-5xl px-5 text-center">
         <motion.div {...fade(0.15)} className="flex justify-center">
-          <Logo priority className="h-10 w-auto sm:h-12" />
+          <Logo priority className="h-7 w-auto sm:h-8" />
         </motion.div>
         <motion.p
           {...fade(0.28)}

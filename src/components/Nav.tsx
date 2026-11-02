@@ -1,22 +1,35 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import type { ProductContent } from "@/lib/content";
+import { useEffect, useState, type MouseEvent } from "react";
+import Link from "next/link";
+import { usePathname, useRouter } from "next/navigation";
 import { Logo } from "@/components/Logo";
+import { DemoButton } from "@/components/DemoButton";
+import { lockScroll, unlockScroll } from "@/lib/scroll-lock";
+import { LOGIN_URL, siteNav } from "@/lib/site";
 
 const linkClass =
   "font-display text-[12px] font-medium uppercase tracking-[0.14em] text-white transition-opacity duration-300 hover:opacity-60";
 
-export function Nav({ content }: { content: ProductContent }) {
+const NAV_DELAY = 280;
+
+export function Nav() {
+  const pathname = usePathname();
+  const router = useRouter();
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const isHome = pathname === "/";
 
   useEffect(() => {
     const onScroll = () => {
-      const next = document.getElementById("positioning");
-      setScrolled(
-        next ? next.getBoundingClientRect().top <= 72 : window.scrollY > 24,
-      );
+      if (isHome) {
+        const next = document.getElementById("positioning");
+        setScrolled(
+          next ? next.getBoundingClientRect().top <= 72 : window.scrollY > 24,
+        );
+      } else {
+        setScrolled(window.scrollY > 8);
+      }
     };
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
@@ -25,7 +38,11 @@ export function Nav({ content }: { content: ProductContent }) {
       window.removeEventListener("scroll", onScroll);
       window.removeEventListener("resize", onScroll);
     };
-  }, []);
+  }, [isHome]);
+
+  useEffect(() => {
+    setOpen(false);
+  }, [pathname]);
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
@@ -36,14 +53,25 @@ export function Nav({ content }: { content: ProductContent }) {
   }, []);
 
   useEffect(() => {
-    document.body.style.overflow = open ? "hidden" : "";
-    return () => {
-      document.body.style.overflow = "";
-    };
+    if (!open) return;
+    lockScroll();
+    return () => unlockScroll();
   }, [open]);
 
   const close = () => setOpen(false);
-  const frosted = scrolled || open;
+  const showLogo = !isHome || scrolled;
+  const frosted = open || scrolled || !isHome;
+
+  function go(href: string, e: MouseEvent<HTMLAnchorElement>) {
+    if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) {
+      setOpen(false);
+      return;
+    }
+    e.preventDefault();
+    setOpen(false);
+    if (href === pathname) return;
+    window.setTimeout(() => router.push(href), open ? NAV_DELAY : 0);
+  }
 
   return (
     <header
@@ -84,25 +112,26 @@ export function Nav({ content }: { content: ProductContent }) {
           </span>
         </button>
 
-        <a
-          href="#top"
-          onClick={close}
-          aria-hidden={!scrolled}
-          tabIndex={scrolled ? 0 : -1}
+        <Link
+          href="/"
+          onClick={(e) => go("/", e)}
+          aria-hidden={!showLogo}
+          tabIndex={showLogo ? 0 : -1}
           className={`absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transition-opacity duration-300 ${
-            scrolled
-              ? "opacity-100"
-              : "pointer-events-none opacity-0"
+            showLogo ? "opacity-100" : "pointer-events-none opacity-0"
           }`}
         >
           <Logo className="h-5 w-auto" />
-        </a>
+        </Link>
 
         <div className="flex items-center gap-6 md:gap-10">
-          <a href="#cta" className={`${linkClass} hidden sm:inline`}>
+          <DemoButton className={`${linkClass} hidden sm:inline`}>
             Request a Demo
-          </a>
-          <a href="#" className={`${linkClass} inline-flex items-center gap-2`}>
+          </DemoButton>
+          <a
+            href={LOGIN_URL}
+            className={`${linkClass} inline-flex items-center gap-2`}
+          >
             Log in
             <span className="grid h-4 w-4 place-items-center rounded-[3px] border border-white/80">
               <svg
@@ -134,15 +163,15 @@ export function Nav({ content }: { content: ProductContent }) {
         <div className="overflow-hidden">
           <div className="flex flex-col gap-10 px-5 py-8 md:px-8 md:py-10 lg:px-10">
             <ul className="flex flex-col gap-3 md:gap-4">
-              {content.nav.map((item) => (
+              {siteNav.map((item) => (
                 <li key={item.href}>
-                  <a
+                  <Link
                     href={item.href}
-                    onClick={close}
+                    onClick={(e) => go(item.href, e)}
                     className="font-display text-[2rem] font-medium leading-none tracking-tight text-white transition-opacity hover:opacity-60 sm:text-[2.5rem]"
                   >
                     {item.label}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
