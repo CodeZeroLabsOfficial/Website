@@ -8,9 +8,9 @@ import { SiteInset, SiteMeasure } from "@/components/ui/SiteInset";
 import { copy } from "@/content/pages";
 
 const pinClass =
-  "lg:sticky lg:top-[72px] lg:flex lg:h-[calc(100vh-72px)] lg:flex-col lg:justify-center";
+  "lg:sticky lg:top-[72px] lg:flex lg:h-[calc(100vh-72px)] lg:flex-col lg:justify-center lg:self-start";
 const frameClass =
-  "flex min-h-[calc(100vh-72px)] scroll-mt-[72px] flex-col items-center justify-center py-16";
+  "flex min-h-[80vh] flex-col items-center justify-center py-16 lg:min-h-[calc(100vh-72px)]";
 
 type Persona = (typeof copy.personas)[number];
 type Item = Persona["items"][number];
@@ -49,31 +49,32 @@ function PersonaBand({ persona }: { persona: Persona }) {
     const root = framesRef.current;
     if (!root) return;
     const nodes = [...root.querySelectorAll<HTMLElement>("[data-frame]")];
+    const ratios = new Map<number, number>();
     const io = new IntersectionObserver(
       (entries) => {
-        const hit = entries
-          .filter((entry) => entry.isIntersecting)
-          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
-        if (!hit) return;
-        const index = Number((hit.target as HTMLElement).dataset.frame);
-        if (!Number.isNaN(index)) setActive(index);
+        for (const entry of entries) {
+          const index = Number((entry.target as HTMLElement).dataset.frame);
+          if (Number.isNaN(index)) continue;
+          ratios.set(index, entry.isIntersecting ? entry.intersectionRatio : 0);
+        }
+        let next = 0;
+        let best = 0;
+        ratios.forEach((ratio, index) => {
+          if (ratio > best) {
+            best = ratio;
+            next = index;
+          }
+        });
+        if (best > 0) setActive(next);
       },
-      { threshold: 0.45 },
+      { rootMargin: "-40% 0px -40% 0px", threshold: [0, 0.25, 0.5, 0.75, 1] },
     );
     nodes.forEach((node) => io.observe(node));
     return () => io.disconnect();
   }, []);
 
-  const onChip = (index: number) => {
-    setActive(index);
-    if (!window.matchMedia("(min-width: 1024px)").matches) return;
-    framesRef.current
-      ?.querySelector<HTMLElement>(`[data-frame="${index}"]`)
-      ?.scrollIntoView({ behavior: "smooth", block: "start" });
-  };
-
   return (
-    <div className="lg:grid lg:grid-cols-2 lg:gap-10">
+    <div className="lg:grid lg:grid-cols-[minmax(0,23.375rem)_minmax(0,1fr)] lg:gap-x-16">
       <div className={pinClass}>
         <Reveal>
           <p className="flex items-center gap-2 font-display text-base font-medium text-muted">
@@ -90,23 +91,18 @@ function PersonaBand({ persona }: { persona: Persona }) {
         <RevealStagger className="mt-8 flex flex-col gap-3" stagger={0.1}>
           {persona.items.map((item, index) => (
             <RevealItem key={item.label} open className="overflow-hidden">
-              <button
-                type="button"
+              <div
                 className="chip"
                 aria-current={active === index ? "true" : undefined}
-                onClick={() => onChip(index)}
               >
                 <Icon name={item.icon} className="h-6 w-6 shrink-0 text-muted" />
                 {item.label}
-              </button>
+              </div>
             </RevealItem>
           ))}
         </RevealStagger>
-        <div className="mt-10 lg:hidden">
-          <FramePreview item={persona.items[active]} />
-        </div>
       </div>
-      <div ref={framesRef} className="hidden lg:block">
+      <div ref={framesRef}>
         {persona.items.map((item, index) => (
           <div key={item.label} data-frame={index} className={frameClass}>
             <FramePreview item={item} />

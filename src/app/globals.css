@@ -52,7 +52,7 @@ html,
 body {
   background: var(--ink);
   color: var(--mist);
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 body {
@@ -157,7 +157,7 @@ body {
   font-weight: 500;
   line-height: 1.2;
   text-align: left;
-  cursor: pointer;
+  cursor: default;
   transition: border-color 0.3s ease, background-color 0.3s ease;
 }
 .chip[aria-current="true"] {
