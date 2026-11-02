@@ -4,7 +4,7 @@ import { useReducedMotion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import { copy } from "@/content/pages";
 
-const INTERVAL_MS = 3000;
+const INTERVAL_MS = 5000;
 
 export function Testimonials() {
   const reduceMotion = useReducedMotion();
