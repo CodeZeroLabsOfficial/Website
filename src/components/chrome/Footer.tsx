@@ -10,7 +10,7 @@ export function Footer() {
         <SiteMeasure>
           <div className="flex flex-col justify-between gap-10 md:flex-row">
             <div className="max-w-sm">
-              <Logo className="h-8 w-auto" />
+              <Logo className="h-5 w-auto" />
               <p className="mt-4 text-base leading-relaxed text-muted">
                 Built by Depesch — premium mobile and web platforms for
                 modern service businesses.

@@ -97,7 +97,7 @@ function PersonaBand({
         className={`${pinClass} ${pinEnd ? "lg:col-start-2 lg:row-start-1" : ""}`}
       >
         <Reveal>
-          <p className="flex items-center gap-2 font-display text-base font-semibold uppercase tracking-[0.12em] text-muted">
+          <p className="flex items-center gap-2 font-display text-eyebrow font-semibold uppercase tracking-[0.12em] text-muted">
             <span className="pulse-dot" aria-hidden="true" />
             {persona.eyebrow}
           </p>
