@@ -86,15 +86,11 @@ function PersonaBand({
   }, []);
 
   return (
-    <div
-      className={
-        pinEnd
-          ? "lg:grid lg:grid-cols-[minmax(0,1fr)_minmax(0,36rem)] lg:gap-x-16"
-          : "lg:grid lg:grid-cols-[minmax(0,36rem)_minmax(0,1fr)] lg:gap-x-16"
-      }
-    >
+    <div className="lg:grid lg:grid-cols-2 lg:gap-x-16">
       <div
-        className={`${pinClass} ${pinEnd ? "lg:col-start-2 lg:row-start-1" : ""}`}
+        className={`${pinClass} ${
+          pinEnd ? "lg:col-start-2 lg:row-start-1 lg:items-end" : ""
+        }`}
       >
         <Reveal>
           <p className="flex items-center gap-2 font-display text-eyebrow font-semibold uppercase tracking-[0.12em] text-muted">
