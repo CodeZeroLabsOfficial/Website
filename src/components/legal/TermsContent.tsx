@@ -2,6 +2,7 @@ import Link from "next/link";
 import {
   LegalA,
   LegalH2,
+  LegalLead,
   LegalOl,
   LegalP,
 } from "@/components/legal/LegalArticle";
@@ -9,34 +10,27 @@ import { SUPPORT_EMAIL, legalEntity } from "@/lib/site";
 
 const mail = `mailto:${SUPPORT_EMAIL}`;
 
+export function TermsIntro() {
+  return (
+    <>
+      <LegalLead>
+        {legalEntity.name} ACN {legalEntity.acn} (ABN {legalEntity.abn})
+        (“we”, “our”, or “us”) provides Depesch, a software platform that
+        connects transport providers with their customers. These Terms of
+        Service govern your access to the Depesch ecosystem.
+      </LegalLead>
+      <LegalLead>
+        We are not a transport company and do not conduct transport services or
+        operations of any kind. Questions about a ride should be directed to
+        the third-party transport provider you are connected to.
+      </LegalLead>
+    </>
+  );
+}
+
 export function TermsContent() {
   return (
     <>
-      <LegalP>
-        <strong className="font-medium text-white">
-          {legalEntity.name} ACN {legalEntity.acn} (ABN {legalEntity.abn})
-        </strong>{" "}
-        (hereafter referred to as Depesch, we or our) provides a
-        software-as-a-service (SaaS) platform connecting third party transport
-        providers with their customers using advanced web and mobile
-        technology. Customers refers to users who include but are not limited
-        to travellers, guest passengers, travel arrangers, executive
-        assistants, event coordinators and concierge personnel, all of whom
-        are hereafter referred to as customers.
-      </LegalP>
-      <LegalP>
-        Depesch is a software platform facilitating connection between
-        travelling customers, transport providers and drivers engaged by the
-        transport providers. We are not a transport company and do not conduct
-        transport services or operations of any kind.
-      </LegalP>
-      <LegalP>
-        If you have any queries or concerns about the transport services or
-        operations that you access and use through Depesch’s platform, you
-        should directly contact the third-party transport provider that you
-        are connected to.
-      </LegalP>
-
       <LegalH2>1. General</LegalH2>
       <LegalP>
         1.1 It is a condition of using the services provided by Depesch that

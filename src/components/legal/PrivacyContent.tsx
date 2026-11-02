@@ -3,6 +3,7 @@ import {
   LegalA,
   LegalH2,
   LegalH3,
+  LegalLead,
   LegalP,
   LegalUl,
 } from "@/components/legal/LegalArticle";
@@ -10,36 +11,28 @@ import { SUPPORT_EMAIL, legalEntity } from "@/lib/site";
 
 const mail = `mailto:${SUPPORT_EMAIL}`;
 
+export function PrivacyIntro() {
+  return (
+    <>
+      <LegalLead>
+        {legalEntity.name} ACN {legalEntity.acn} (ABN {legalEntity.abn})
+        (“we”, “our”, or “us”) values your privacy and is committed to
+        protecting personal information. This Privacy Policy explains how we
+        collect, use, and safeguard information when you use Depesch, including
+        our dispatch platform, mobile apps, and related services.
+      </LegalLead>
+      <LegalLead>
+        When used in this policy, “personal information” has the meaning given
+        to that term in the Privacy Act 1988 (Cth).
+      </LegalLead>
+    </>
+  );
+}
+
 export function PrivacyContent() {
   return (
     <>
-      <LegalP>
-        <strong className="font-medium text-white">
-          {legalEntity.name} ACN {legalEntity.acn} (ABN {legalEntity.abn})
-        </strong>{" "}
-        (also referred to in this policy as <strong className="font-medium text-white">Depesch</strong>,{" "}
-        <strong className="font-medium text-white">we</strong> or{" "}
-        <strong className="font-medium text-white">us</strong>) recognises the
-        importance of protecting the privacy of customers, fleet operators,
-        contracted drivers and other third parties who provide their personal
-        information to us. Confidentiality of every user’s information is at
-        the forefront of how we operate Depesch.
-      </LegalP>
-      <LegalP>
-        This policy sets out how we collect, use, disclose and hold personal
-        information. We are committed to handling your personal information in
-        accordance with the applicable laws and this policy.
-      </LegalP>
-      <LegalP>
-        When used in this policy, “personal information” has the meaning given
-        to that term in the{" "}
-        <em>Privacy Act 1988</em> (Cth) (<strong className="font-medium text-white">Privacy Act</strong>).
-        Personal information generally includes any information about an
-        identified individual, or an individual who may reasonably be
-        identifiable. This may include an opinion related to a natural person.
-      </LegalP>
-
-      <LegalH2>Personal information we collect</LegalH2>
+      <LegalH2>1. Personal information we collect</LegalH2>
       <LegalP>
         The types of personal information we may collect from you in the course
         of our business vary depending on our relationship with you and may
@@ -110,7 +103,7 @@ export function PrivacyContent() {
         </li>
       </LegalUl>
 
-      <LegalH2>Mobile App</LegalH2>
+      <LegalH2>2. Mobile App</LegalH2>
       <LegalH3>Use of the Mobile App by drivers and fleet operators</LegalH3>
       <LegalP>
         When using our Mobile App, your location may be sent back to our
@@ -136,7 +129,7 @@ export function PrivacyContent() {
         track passengers at any time before, during or after a trip.
       </LegalP>
 
-      <LegalH2>Collection of sensitive information</LegalH2>
+      <LegalH2>3. Collection of sensitive information</LegalH2>
       <LegalP>
         We may collect some sensitive information about you. However, we will
         only do so with your consent, or where permitted or required by law.
@@ -152,7 +145,7 @@ export function PrivacyContent() {
         provide our services to you.
       </LegalP>
 
-      <LegalH2>Cookies and device information</LegalH2>
+      <LegalH2>4. Cookies and device information</LegalH2>
       <LegalP>
         We may use temporary (session) cookies or permanent cookies when you
         access our website. A “cookie” is a small text file that is placed on
@@ -167,7 +160,7 @@ export function PrivacyContent() {
         number, IP address or MAC address and other unique device identifiers.
       </LegalP>
 
-      <LegalH2>How we collect your personal information</LegalH2>
+      <LegalH2>5. How we collect your personal information</LegalH2>
       <LegalP>
         Normally, we collect information from you directly. This can occur
         through the following interactions:
@@ -204,7 +197,7 @@ export function PrivacyContent() {
         <li>publicly available sources, such as social media platforms.</li>
       </LegalUl>
 
-      <LegalH2>How we hold your personal information</LegalH2>
+      <LegalH2>6. How we hold your personal information</LegalH2>
       <LegalP>
         We may hold your personal information in either electronic or hard copy
         form.
@@ -221,7 +214,7 @@ export function PrivacyContent() {
         files.
       </LegalP>
 
-      <LegalH2>Security</LegalH2>
+      <LegalH2>7. Security</LegalH2>
       <LegalP>
         We take reasonable steps to ensure your personal information is
         protected from misuse, loss, unauthorised access, modification or
@@ -252,7 +245,7 @@ export function PrivacyContent() {
       </LegalP>
 
       <LegalH2>
-        What purposes do we collect, hold, use and disclose your personal
+        8. What purposes do we collect, hold, use and disclose your personal
         information for?
       </LegalH2>
       <LegalP>
@@ -293,7 +286,7 @@ export function PrivacyContent() {
         </li>
       </LegalUl>
 
-      <LegalH2>Who do we disclose your personal information to?</LegalH2>
+      <LegalH2>9. Who do we disclose your personal information to?</LegalH2>
       <LegalP>
         As part of our operations, we may disclose your personal information to
         third parties for one of the above purposes, or a related purpose.
@@ -341,7 +334,7 @@ export function PrivacyContent() {
         activities.
       </LegalP>
 
-      <LegalH2>Overseas disclosure</LegalH2>
+      <LegalH2>10. Overseas disclosure</LegalH2>
       <LegalP>
         We may disclose your personal information to third parties and service
         providers located overseas.
@@ -352,7 +345,7 @@ export function PrivacyContent() {
         your personal information.
       </LegalP>
 
-      <LegalH2>Direct marketing</LegalH2>
+      <LegalH2>11. Direct marketing</LegalH2>
       <LegalP>
         We may use your personal information to send you direct marketing
         communications and information about services and products offered by
@@ -380,7 +373,7 @@ export function PrivacyContent() {
         still send you service-related communications.
       </LegalP>
 
-      <LegalH2>Access to your personal information</LegalH2>
+      <LegalH2>12. Access to your personal information</LegalH2>
       <LegalP>
         You may access your personal information held by us via our online
         portal by accessing your own account over the internet.
@@ -392,14 +385,14 @@ export function PrivacyContent() {
         privacy of others.
       </LegalP>
 
-      <LegalH2>Updating and correcting your personal information</LegalH2>
+      <LegalH2>13. Updating and correcting your personal information</LegalH2>
       <LegalP>
         If you consider that personal information that we hold about you is
         incorrect or outdated, you should let us know immediately by logging
         into your account and making the required changes.
       </LegalP>
 
-      <LegalH2>Complaints</LegalH2>
+      <LegalH2>14. Complaints</LegalH2>
       <LegalP>
         If you feel your privacy has been breached, please contact us using the
         contact details set out below, setting out the circumstances and
@@ -420,7 +413,7 @@ export function PrivacyContent() {
         calling 1300 363 992.
       </LegalP>
 
-      <LegalH2>Contacting us</LegalH2>
+      <LegalH2>15. Contacting us</LegalH2>
       <LegalP>
         If you would like to contact us in relation to this Privacy Policy or
         your personal information, including if you wish to access or correct

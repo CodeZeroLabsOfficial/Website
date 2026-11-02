@@ -2,7 +2,7 @@ export const LOGIN_URL = "https://portal.depesch.com";
 export const SUPPORT_EMAIL = "support@depesch.com";
 
 export const legalEntity = {
-  name: "Code Zero Labs Pty Ltd",
+  name: "Depesch Limited",
   acn: "697 379 990",
   abn: "12 697 379 990",
   brand: "Depesch",
