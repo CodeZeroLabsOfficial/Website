@@ -108,14 +108,14 @@ function PersonaBand({
             {persona.body}
           </p>
         </Reveal>
-        <RevealStagger className="mt-6 flex flex-col gap-3" stagger={0.1}>
+        <RevealStagger className="mt-6 flex w-max max-w-full flex-col gap-3" stagger={0.1}>
           {persona.items.map((item, index) => (
-            <RevealItem key={item.label} open className="overflow-hidden">
+            <RevealItem key={item.label} open className="w-full overflow-hidden">
               <div
                 className="chip"
                 aria-current={active === index ? "true" : undefined}
               >
-                <Icon name={item.icon} className="h-6 w-6 shrink-0" />
+                <Icon name={item.icon} className="h-4 w-4 shrink-0" />
                 {item.label}
               </div>
             </RevealItem>
