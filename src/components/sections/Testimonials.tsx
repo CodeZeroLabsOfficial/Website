@@ -94,7 +94,7 @@ export function Testimonials() {
             <span className="font-display text-7xl leading-none text-white/20">
               &ldquo;
             </span>
-            <blockquote className="font-display -mt-6 max-w-3xl text-h4 font-medium leading-10 text-white">
+            <blockquote className="font-display -mt-6 max-w-3xl text-h4 font-medium leading-relaxed text-white">
               {item.quote}
             </blockquote>
             <div className="mt-8 flex items-center justify-center gap-3">

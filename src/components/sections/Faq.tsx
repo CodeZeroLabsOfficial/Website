@@ -32,7 +32,7 @@ export function Faq() {
                     <span className="w-8 shrink-0 font-display text-small text-muted">
                       {n}
                     </span>
-                    <span className="flex-1 font-display text-lg font-medium text-white">
+                    <span className="flex-1 font-display text-base font-medium text-white">
                       {item.q}
                     </span>
                     <span
