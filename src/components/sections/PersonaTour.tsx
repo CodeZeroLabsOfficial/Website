@@ -15,7 +15,7 @@ import { copy } from "@/content/pages";
 const pinClass =
   "lg:sticky lg:top-[72px] lg:flex lg:h-[calc(100vh-72px)] lg:flex-col lg:justify-center lg:self-start";
 const frameClass =
-  "flex flex-col items-center justify-center py-12 lg:h-[calc(100vh-72px)] lg:py-0";
+  "flex flex-col items-center justify-center py-16 lg:min-h-[40rem]";
 
 type Persona = (typeof copy.personas)[number];
 type Item = Persona["items"][number];
@@ -89,22 +89,22 @@ function PersonaBand({
     <div
       className={
         pinEnd
-          ? "lg:grid lg:grid-cols-[minmax(0,1fr)_480px] lg:gap-x-40 lg:pr-[150px]"
-          : "lg:grid lg:grid-cols-[374px_minmax(0,1fr)] lg:gap-x-40 lg:pl-[150px]"
+          ? "lg:grid lg:grid-cols-[minmax(0,1fr)_minmax(0,36rem)] lg:gap-x-40"
+          : "lg:grid lg:grid-cols-[minmax(0,36rem)_minmax(0,1fr)] lg:gap-x-40"
       }
     >
       <div
         className={`${pinClass} ${pinEnd ? "lg:col-start-2 lg:row-start-1" : ""}`}
       >
         <Reveal>
-          <p className="eyebrow flex items-center gap-2">
+          <p className="flex items-center gap-2 font-display text-base font-semibold uppercase tracking-[0.12em] text-muted">
             <span className="pulse-dot" aria-hidden="true" />
             {persona.eyebrow}
           </p>
-          <h2 className="h-display mt-3 whitespace-pre-line text-h2">
+          <h2 className="h-display mt-4 whitespace-pre-line text-h2">
             {persona.title}
           </h2>
-          <p className="mt-7 max-w-[350px] text-base leading-6 text-muted">
+          <p className="mt-4 max-w-[350px] text-base leading-6 text-muted">
             {persona.body}
           </p>
         </Reveal>
