@@ -88,9 +88,7 @@ function PersonaBand({
   return (
     <div className="lg:grid lg:grid-cols-2 lg:gap-x-16">
       <div
-        className={`${pinClass} ${
-          pinEnd ? "lg:col-start-2 lg:row-start-1 lg:items-end" : ""
-        }`}
+        className={`${pinClass} ${pinEnd ? "lg:col-start-2 lg:row-start-1" : ""}`}
       >
         <Reveal>
           <p className="flex items-center gap-2 font-display text-eyebrow font-semibold uppercase tracking-[0.12em] text-muted">
