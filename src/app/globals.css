@@ -147,23 +147,6 @@ body {
   color: var(--white);
 }
 
-@keyframes marquee {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-50%);
-  }
-}
-.marquee-track {
-  display: flex;
-  width: max-content;
-  animation: marquee 26s linear infinite;
-}
-.marquee-slow {
-  animation-duration: 56s;
-}
-
 .glow {
   background: radial-gradient(
     60% 60% at 50% 0%,
@@ -273,7 +256,6 @@ body {
   html {
     scroll-behavior: auto;
   }
-  .marquee-track,
   .pulse-dot::before,
   .play-pulse::before {
     animation: none;

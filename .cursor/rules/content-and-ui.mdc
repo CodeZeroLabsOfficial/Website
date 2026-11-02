@@ -9,7 +9,7 @@ Copy, URLs, entity details, nav, FAQs, and form options live in `src/content/`. 
 
 Legal documents are data (`src/content/legal/`) rendered by `LegalPage`. Do not add `LegalH2` / `LegalP` public helpers. Change title size, grid, or meta rail in `LegalPage` only.
 
-Horizontal padding is `siteInsetClass` from `src/components/ui/SiteInset.tsx` (`px-5 md:px-8 lg:px-10`). Vertical section padding is `siteSectionClass` (`py-24 md:py-32`). Stacked chapter gaps are `siteStackClass` (`gap-24 md:gap-32`). Use `SiteInset` / `SiteMeasure` instead of repeating those classes. Full-bleed blocks (Hero, film stills, quote marquee) stay unpadded.
+Horizontal padding is `siteInsetClass` from `src/components/ui/SiteInset.tsx` (`px-5 md:px-8 lg:px-10`). Vertical section padding is `siteSectionClass` (`py-24 md:py-32`). Stacked chapter gaps are `siteStackClass` (`gap-24 md:gap-32`). Use `SiteInset` / `SiteMeasure` instead of repeating those classes. Full-bleed blocks (Hero, film stills, testimonials) stay unpadded.
 
 Nav/menu/CTA labels stay uppercase (`Request a Demo`, `Log in`, `Menu`). Do not mention third-party reference sites in code, comments, or commit messages.
 
