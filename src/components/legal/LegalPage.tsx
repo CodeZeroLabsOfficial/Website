@@ -1,6 +1,6 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
-import { SiteInset } from "@/components/ui/SiteInset";
+import { SiteInset, SiteMeasure } from "@/components/ui/SiteInset";
 import { legalEntity } from "@/content/site";
 import type {
   LegalBlock,
@@ -9,69 +9,63 @@ import type {
   LegalListItem,
 } from "@/content/legal/types";
 
+const bodyClass = "mt-4 text-[1.25rem] leading-[1.6] text-mist";
+
 export function LegalPage({ document }: { document: LegalDocument }) {
   return (
-    <SiteInset
-      as="article"
-      className="w-full pb-24 pt-32 md:pb-32 md:pt-40"
-    >
-      <h1 className="font-display text-[2.25rem] font-medium uppercase leading-[0.95] tracking-[-0.03em] text-white sm:text-5xl lg:text-[4rem]">
-        {document.title}
-      </h1>
-      <div className="mt-10 grid gap-10 md:mt-14 md:grid-cols-[8.5rem_minmax(0,40rem)] lg:gap-16">
-        <aside className="md:pt-1">
-          <p className="text-sm text-muted">Last updated</p>
-          <p className="mt-1 text-sm text-white">{legalEntity.updated}</p>
-        </aside>
-        <div>
-          <p className="font-display text-[1.25rem] font-medium leading-snug text-white sm:text-[1.4rem]">
-            {document.lead}
-          </p>
-          {document.preface?.map((paragraph) => (
-            <p
-              key={paragraph}
-              className="mt-4 text-base leading-[1.75] text-mist"
-            >
-              {paragraph}
+    <SiteMeasure className="max-w-[1320px]">
+      <SiteInset as="article" className="w-full pb-[7.5rem] pt-[12.5rem]">
+        <h1 className="max-w-[800px] font-display text-[2.5rem] font-medium uppercase leading-none tracking-[-0.04em] text-white sm:text-5xl lg:text-[5rem]">
+          {document.title}
+        </h1>
+        <div className="mt-16 grid gap-10 md:grid-cols-[300px_minmax(0,800px)] md:gap-x-3">
+          <aside>
+            <p className="text-xs text-muted">Last updated:</p>
+            <p className="mt-1 text-xs text-white">{legalEntity.updated}</p>
+          </aside>
+          <div>
+            <p className="font-display text-xl font-medium leading-[1.2] tracking-[-0.02em] text-white sm:text-[2rem]">
+              {document.lead}
             </p>
-          ))}
-          <div className="mt-10">
-            {document.sections.map((section) => (
-              <section key={section.title} className="mt-10 first:mt-0">
-                <h2 className="font-display text-xl font-medium text-white">
-                  {section.title}
-                </h2>
-                {section.blocks.map((block, index) => (
-                  <Block key={index} block={block} />
-                ))}
-              </section>
+            {document.preface?.map((paragraph) => (
+              <p key={paragraph} className={bodyClass}>
+                {paragraph}
+              </p>
             ))}
+            <div className="mt-16">
+              {document.sections.map((section) => (
+                <section key={section.title} className="mt-16 first:mt-0">
+                  <h2 className="font-display text-[1.75rem] font-medium leading-[1.3] tracking-[-0.02em] text-white">
+                    {section.title}
+                  </h2>
+                  {section.blocks.map((block, index) => (
+                    <Block key={index} block={block} />
+                  ))}
+                </section>
+              ))}
+            </div>
           </div>
         </div>
-      </div>
-    </SiteInset>
+      </SiteInset>
+    </SiteMeasure>
   );
 }
 
 function Block({ block }: { block: LegalBlock }) {
   if (block.type === "h3") {
     return (
-      <h3 className="font-display mt-8 text-lg font-medium text-white">
+      <h3 className="font-display mt-8 text-[1.25rem] font-medium tracking-[-0.02em] text-white">
         {block.text}
       </h3>
     );
   }
   if (block.type === "p") {
-    return (
-      <p className="mt-4 text-base leading-[1.75] text-mist">
-        {renderInline(block.text)}
-      </p>
-    );
+    return <p className={bodyClass}>{renderInline(block.text)}</p>;
   }
   const Tag = block.type;
   return (
     <Tag
-      className={`mt-4 space-y-2 pl-5 text-base leading-[1.75] text-mist ${
+      className={`${bodyClass} space-y-2 pl-5 ${
         block.type === "ol" ? "list-decimal" : "list-disc"
       }`}
     >
