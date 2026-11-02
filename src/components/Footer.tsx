@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Logo } from "@/components/Logo";
-import { siteNav } from "@/lib/site";
+import { SUPPORT_EMAIL, legalNav, siteNav } from "@/lib/site";
 
 export function Footer() {
   return (
@@ -21,8 +21,8 @@ export function Footer() {
               title="Company"
               links={[
                 { label: "Support", href: "/support" },
-                { label: "Contact", href: "mailto:hello@depesch.com" },
-                { label: "Privacy", href: "#" },
+                { label: "Contact", href: `mailto:${SUPPORT_EMAIL}` },
+                ...legalNav,
               ]}
             />
           </div>

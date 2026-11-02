@@ -88,7 +88,7 @@ export function Hero({ content }: { content: ProductContent }) {
         </motion.div>
         <motion.p
           {...fade(0.28)}
-          className="mt-8 font-display text-[0.8125rem] font-medium uppercase tracking-[0.18em] text-white sm:text-sm"
+          className="mt-14 font-display text-[0.8125rem] font-medium uppercase tracking-[0.18em] text-white sm:mt-16 sm:text-sm"
         >
           {content.hero.eyebrow}
         </motion.p>

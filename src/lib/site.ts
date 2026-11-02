@@ -1,4 +1,18 @@
 export const LOGIN_URL = "https://portal.depesch.com";
+export const SUPPORT_EMAIL = "support@depesch.com";
+
+export const legalEntity = {
+  name: "Code Zero Labs Pty Ltd",
+  acn: "697 379 990",
+  abn: "12 697 379 990",
+  brand: "Depesch",
+  updated: "2 November 2026",
+};
+
+export const legalNav = [
+  { label: "Privacy Policy", href: "/legal/privacy-policy" },
+  { label: "Terms of Service", href: "/legal/terms-of-service" },
+] as const;
 
 export const siteNav = [
   { label: "Home", href: "/" },

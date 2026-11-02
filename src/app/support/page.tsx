@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
 import { Footer } from "@/components/Footer";
-import { supportFaqs } from "@/lib/site";
+import { SUPPORT_EMAIL, supportFaqs } from "@/lib/site";
 import { Reveal } from "@/components/Reveal";
 
 export const metadata: Metadata = {
   title: "Support — Depesch",
   description:
-    "Get help with Depesch dispatch, driver apps, and account billing. Contact hello@depesch.com.",
+    `Get help with Depesch dispatch, driver apps, and account billing. Contact ${SUPPORT_EMAIL}.`,
 };
 
 export default function SupportPage() {
@@ -22,10 +22,10 @@ export default function SupportPage() {
               reach the team directly.
             </p>
             <a
-              href="mailto:hello@depesch.com"
+              href={`mailto:${SUPPORT_EMAIL}`}
               className="mt-8 inline-block font-display text-2xl text-white transition-opacity hover:opacity-60"
             >
-              hello@depesch.com
+              {SUPPORT_EMAIL}
             </a>
           </Reveal>
 

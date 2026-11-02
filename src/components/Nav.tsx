@@ -6,7 +6,7 @@ import { usePathname, useRouter } from "next/navigation";
 import { Logo } from "@/components/Logo";
 import { DemoButton } from "@/components/DemoButton";
 import { lockScroll, unlockScroll } from "@/lib/scroll-lock";
-import { LOGIN_URL, siteNav } from "@/lib/site";
+import { LOGIN_URL, SUPPORT_EMAIL, legalNav, siteNav } from "@/lib/site";
 
 const linkClass =
   "font-display text-[12px] font-medium uppercase tracking-[0.14em] text-white transition-opacity duration-300 hover:opacity-60";
@@ -182,19 +182,23 @@ export function Nav() {
                   Need support?
                 </p>
                 <a
-                  href="mailto:hello@depesch.com"
+                  href={`mailto:${SUPPORT_EMAIL}`}
                   className="mt-1 block font-display text-lg text-white transition-opacity hover:opacity-60"
                 >
-                  hello@depesch.com
+                  {SUPPORT_EMAIL}
                 </a>
               </div>
               <div className="flex gap-8">
-                <a href="#" className={linkClass}>
-                  Privacy Policy
-                </a>
-                <a href="#" className={linkClass}>
-                  Terms of Service
-                </a>
+                {legalNav.map((item) => (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    onClick={(e) => go(item.href, e)}
+                    className={linkClass}
+                  >
+                    {item.label}
+                  </Link>
+                ))}
               </div>
             </div>
           </div>
