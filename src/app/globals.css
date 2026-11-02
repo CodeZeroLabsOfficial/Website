@@ -2,20 +2,20 @@
 
 /* ----------------------------------------------------------------------------
    Depesch — design system
-   Dark, warm-neutral aesthetic: near-black canvas, bone paper, Geist + Inter.
+   Dark cool-neutral: near-black canvas, zinc paper, Geist + Inter.
 ---------------------------------------------------------------------------- */
 
 :root {
-  --ink: #0d0d0d; /* page canvas */
-  --ink-2: #2b2b28; /* raised panels */
-  --ink-3: #51504a; /* borders / hairlines */
-  --mist: #eceee8; /* body text */
-  --muted: #928f86; /* secondary text */
-  --white: #eceee8;
+  --ink: #09090b; /* page canvas */
+  --ink-2: #0f0f12; /* raised panels */
+  --ink-3: #1c1c20; /* borders / hairlines */
+  --mist: #f4f4f5; /* body text */
+  --muted: #a1a1aa; /* secondary text */
+  --white: #f4f4f5;
 
-  --accent: #eceee8;
-  --accent-soft: #51504a;
-  --accent-contrast: #0d0d0d;
+  --accent: #f8fafc;
+  --accent-soft: #2d2d34;
+  --accent-contrast: #09090b;
 }
 
 @theme inline {
@@ -179,7 +179,7 @@ body {
   height: 3.5rem;
   width: 100%;
   padding: 1rem 1.25rem;
-  border: 1px solid var(--ink-2);
+  border: 1px solid var(--ink-3);
   border-radius: 0.75rem;
   background: var(--ink);
   color: var(--white);
@@ -197,8 +197,8 @@ body {
   stroke-width: 2;
 }
 .chip[aria-current="true"] {
-  border-color: color-mix(in srgb, var(--white) 14%, transparent);
-  background: color-mix(in srgb, var(--ink-2) 55%, var(--ink));
+  border-color: var(--ink-3);
+  background: var(--ink-2);
 }
 @media (min-width: 1024px) {
   .chip {
