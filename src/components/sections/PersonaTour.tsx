@@ -13,18 +13,14 @@ import {
 import { copy } from "@/content/pages";
 
 const pinClass =
-  "lg:sticky lg:top-[72px] lg:flex lg:h-[calc(100vh-72px)] lg:flex-col lg:justify-center lg:self-stretch";
+  "lg:sticky lg:top-[72px] lg:flex lg:h-[calc(100vh-72px)] lg:flex-col lg:justify-center lg:self-start";
+const frameClass =
+  "flex flex-col items-center justify-center py-16 lg:min-h-[40rem]";
 
 type Persona = (typeof copy.personas)[number];
 type Item = Persona["items"][number];
 
-function FramePreview({
-  item,
-  caption = true,
-}: {
-  item: Item;
-  caption?: boolean;
-}) {
+function FramePreview({ item }: { item: Item }) {
   return (
     <div>
       <DeviceFrame>
@@ -40,14 +36,12 @@ function FramePreview({
           <div className="h-12 rounded-2xl bg-white/[0.04]" />
         </div>
       </DeviceFrame>
-      {caption ? (
-        <p className="mt-6 text-center">
-          <span className="font-display text-lg font-medium text-white">
-            {item.frame}
-          </span>
-          <span className="mt-1 block text-small text-muted">{item.label}</span>
-        </p>
-      ) : null}
+      <p className="mt-6 text-center">
+        <span className="font-display text-lg font-medium text-white">
+          {item.frame}
+        </span>
+        <span className="mt-1 block text-small text-muted">{item.label}</span>
+      </p>
     </div>
   );
 }
@@ -62,7 +56,6 @@ function PersonaBand({
   const [active, setActive] = useState(0);
   const framesRef = useRef<HTMLDivElement>(null);
   const pinEnd = pin === "end";
-  const copyCol = pinEnd ? "lg:w-[480px]" : "lg:w-[374px]";
 
   useEffect(() => {
     const root = framesRef.current;
@@ -92,84 +85,52 @@ function PersonaBand({
     return () => io.disconnect();
   }, []);
 
-  const copyBlock = (
-    <div className={copyCol}>
-      <Reveal>
-        <p className="flex items-center gap-2 font-display text-base font-medium leading-6 tracking-[-0.01em] text-muted">
-          <span className="pulse-dot" aria-hidden="true" />
-          {persona.eyebrow}
-        </p>
-        <h2 className="persona-title mt-2 whitespace-pre-line">
-          {persona.title}
-        </h2>
-        <p className="mt-7 max-w-[350px] text-base leading-6 text-muted">
-          {persona.body}
-        </p>
-      </Reveal>
-      <RevealStagger className="mt-6 flex flex-col gap-3" stagger={0.1}>
-        {persona.items.map((item, index) => (
-          <RevealItem key={item.label} open className="overflow-hidden">
-            <div
-              className="chip"
-              aria-current={active === index ? "true" : undefined}
-            >
-              <Icon name={item.icon} className="h-6 w-6 shrink-0" />
-              {item.label}
-            </div>
-          </RevealItem>
-        ))}
-      </RevealStagger>
-    </div>
-  );
-
-  const phoneBlock = (
-    <div
-      className={`hidden lg:flex lg:items-center ${pinEnd ? "lg:justify-end" : "lg:justify-center"}`}
-    >
-      <FramePreview item={persona.items[active]} caption={false} />
-    </div>
-  );
-
   return (
-    <div>
-      <div className={pinClass}>
-        <div
-          className={
-            pinEnd
-              ? "lg:grid lg:grid-cols-[minmax(0,1fr)_480px] lg:items-center lg:gap-x-40"
-              : "lg:grid lg:grid-cols-[374px_minmax(0,1fr)] lg:items-center lg:gap-x-40"
-          }
-        >
-          {pinEnd ? (
-            <>
-              {phoneBlock}
-              {copyBlock}
-            </>
-          ) : (
-            <>
-              {copyBlock}
-              {phoneBlock}
-            </>
-          )}
-        </div>
+    <div
+      className={
+        pinEnd
+          ? "lg:grid lg:grid-cols-[minmax(0,1fr)_minmax(0,36rem)] lg:gap-x-40"
+          : "lg:grid lg:grid-cols-[minmax(0,36rem)_minmax(0,1fr)] lg:gap-x-40"
+      }
+    >
+      <div
+        className={`${pinClass} ${pinEnd ? "lg:col-start-2 lg:row-start-1" : ""}`}
+      >
+        <Reveal>
+          <p className="flex items-center gap-2 font-display text-base font-semibold uppercase tracking-[0.12em] text-muted">
+            <span className="pulse-dot" aria-hidden="true" />
+            {persona.eyebrow}
+          </p>
+          <h2 className="h-display mt-4 whitespace-pre-line text-h2">
+            {persona.title}
+          </h2>
+          <p className="mt-4 max-w-[350px] text-base leading-6 text-muted">
+            {persona.body}
+          </p>
+        </Reveal>
+        <RevealStagger className="mt-6 flex flex-col gap-3" stagger={0.1}>
+          {persona.items.map((item, index) => (
+            <RevealItem key={item.label} open className="overflow-hidden">
+              <div
+                className="chip"
+                aria-current={active === index ? "true" : undefined}
+              >
+                <Icon name={item.icon} className="h-6 w-6 shrink-0" />
+                {item.label}
+              </div>
+            </RevealItem>
+          ))}
+        </RevealStagger>
       </div>
-      <div ref={framesRef}>
-        <div className="hidden lg:block" aria-hidden="true">
-          {persona.items.map((item, index) => (
-            <div key={item.label} data-frame={index} className="h-[272px]" />
-          ))}
-        </div>
-        <div className="lg:hidden">
-          {persona.items.map((item, index) => (
-            <div
-              key={item.label}
-              data-frame={index}
-              className="flex justify-center py-12"
-            >
-              <FramePreview item={item} />
-            </div>
-          ))}
-        </div>
+      <div
+        ref={framesRef}
+        className={pinEnd ? "lg:col-start-1 lg:row-start-1" : ""}
+      >
+        {persona.items.map((item, index) => (
+          <div key={item.label} data-frame={index} className={frameClass}>
+            <FramePreview item={item} />
+          </div>
+        ))}
       </div>
     </div>
   );
