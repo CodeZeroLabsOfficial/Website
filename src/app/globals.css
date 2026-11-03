@@ -130,6 +130,13 @@ body {
   color: var(--white);
 }
 
+/* Section heads: shrink on phone only; desktop stays 36px. */
+@media (max-width: 767px) {
+  .text-h2 {
+    font-size: 1.75rem; /* 28px */
+  }
+}
+
 .btn-accent {
   font-family: var(--font-display);
   font-weight: 600;
