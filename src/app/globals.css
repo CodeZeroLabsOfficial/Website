@@ -38,7 +38,7 @@
   --text-lead: 1.0625rem; /* 17px */
   --text-h4: 1.25rem; /* 20px */
   --text-h3: 1.5rem; /* 24px */
-  --text-h2: 2.25rem; /* 36px */
+  --text-h2: 2.1875rem; /* 35px — section heads on phone */
   --text-h1: 2.5rem; /* 40px */
   --text-display: 3rem; /* 48px */
 }
@@ -128,6 +128,13 @@ body {
   letter-spacing: 0.06em;
   text-transform: uppercase;
   color: var(--white);
+}
+
+/* Section heads: mild step up on desktop (hero lockup stays separate). */
+@media (min-width: 1024px) {
+  .text-h2 {
+    font-size: 3rem; /* 48px */
+  }
 }
 
 .btn-accent {
