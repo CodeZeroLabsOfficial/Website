@@ -378,12 +378,12 @@ export const copy = {
       },
       {
         id: "scale",
-        eyebrow: "Scale",
+        eyebrow: "Growth",
         title: "Scale with\nconfidence.",
         items: [
           {
             title: "Multiple locations",
-            body: "Add bases and cities without rebuilding the operation.",
+            body: "Expand into new cities with the same mobile app experience everywhere.",
             image: "/img/features/multiple-locations.jpg",
           },
           {
@@ -393,7 +393,7 @@ export const copy = {
           },
           {
             title: "Partners and affiliates",
-            body: "Bring partners and affiliates into the book with shared tooling.",
+            body: "Partner with affiliates to offer value-add services alongside every transfer.",
             image: "/img/features/partners-affiliates.jpg",
           },
         ],
