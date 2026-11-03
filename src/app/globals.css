@@ -34,8 +34,8 @@
 
   --text-eyebrow: 0.75rem; /* 12px */
   --text-small: 0.875rem; /* 14px */
-  --text-base: 1rem; /* 16px */
-  --text-lead: 1.125rem; /* 18px */
+  --text-base: 0.9375rem; /* 15px */
+  --text-lead: 1.0625rem; /* 17px */
   --text-h4: 1.25rem; /* 20px */
   --text-h3: 1.5rem; /* 24px */
   --text-h2: 2.25rem; /* 36px */
