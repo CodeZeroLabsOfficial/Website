@@ -221,7 +221,7 @@ export const copy = {
     chapters: [
       {
         id: "customer-experience",
-        eyebrow: "Capabilities",
+        eyebrow: "Passenger",
         title: "Own the customer\nexperience",
         items: [
           {
@@ -243,7 +243,7 @@ export const copy = {
       },
       {
         id: "dispatch-chaos",
-        eyebrow: "Operations",
+        eyebrow: "Driver",
         title: "Navigation, status, jobs.\nHandled in one place.",
         items: [
           {
@@ -267,7 +267,7 @@ export const copy = {
             image: "/img/features/onboarding.jpg",
           },
           {
-            title: "In-app messaging",
+            title: "Secure in-app messaging",
             body: "Talk to clients and dispatch without leaving the job screen.",
             image: "/img/features/messaging.jpg",
           },
@@ -280,7 +280,7 @@ export const copy = {
       },
       {
         id: "orchestrate-journey",
-        eyebrow: "Dispatch Management",
+        eyebrow: "Dispatch",
         title: "Every journey,\nperfectly orchestrated",
         items: [
           {
