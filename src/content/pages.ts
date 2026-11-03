@@ -63,9 +63,14 @@ export const copy = {
       body: "Bookings, replies, reminders & reschedules. Let your drivers focus on the ride.",
       items: [
         {
-          label: "Dedicated Driver app with navigation & job management",
+          label: "Dedicated driver app with job management",
           frame: "Driver app",
           icon: "device" as IconName,
+        },
+        {
+          label: "Live status updates with turn-by-turn navigation",
+          frame: "Navigation",
+          icon: "route" as IconName,
         },
         {
           label: "Automated dispatching and notifications",
@@ -73,19 +78,14 @@ export const copy = {
           icon: "refresh" as IconName,
         },
         {
-          label: "Intelligent fleet management",
-          frame: "Fleet",
-          icon: "stack" as IconName,
-        },
-        {
-          label: "Automated invoicing, payments & instant payouts",
+          label: "Automated invoicing and instant payments",
           frame: "Invoicing",
           icon: "file" as IconName,
         },
         {
-          label: "Dynamic trip pricing configuration",
-          frame: "Pricing",
-          icon: "currency" as IconName,
+          label: "Intelligent fleet management",
+          frame: "Fleet",
+          icon: "stack" as IconName,
         },
       ],
     },
