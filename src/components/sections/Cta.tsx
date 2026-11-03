@@ -42,7 +42,7 @@ export function Cta() {
     <section className="section relative overflow-hidden">
       <div className="glow pointer-events-none absolute inset-x-0 bottom-0 h-[420px] rotate-180" />
       <Container className="relative max-w-[920px]">
-        <Reveal className="overflow-hidden rounded-3xl border border-ink-3/60 bg-ink-2/60 p-10 text-center md:p-16">
+        <Reveal className="text-center">
           <SectionHeader
             title={copy.cta.title}
             body={copy.cta.body}

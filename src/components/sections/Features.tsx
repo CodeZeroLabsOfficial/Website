@@ -43,7 +43,7 @@ export function Features() {
           <Reveal delay={0.12}>
             <nav
               aria-label="Feature sections"
-              className="mt-12 grid gap-0 sm:grid-cols-3 sm:gap-8"
+              className="mt-28 grid gap-0 sm:grid-cols-3 sm:gap-8"
             >
               {features.jumps.map((jump) => (
                 <a key={jump.href} href={jump.href} className="jump-link">
