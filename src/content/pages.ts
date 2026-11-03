@@ -217,6 +217,8 @@ export const copy = {
       { label: "Focus on the Drive", href: "#dispatch-chaos" },
       { label: "Orchestrate every journey", href: "#orchestrate-journey" },
       { label: "Premium features", href: "#premium" },
+      { label: "Make it yours", href: "#additional-capabilities" },
+      { label: "Scale with confidence", href: "#scale" },
     ] satisfies FeatureJump[],
     chapters: [
       {
@@ -340,10 +342,59 @@ export const copy = {
             body: "Quality scores that keep the fleet sharp and clients confident.",
             image: "/img/features/driver-ratings.jpg",
           },
+        ],
+      },
+      {
+        id: "additional-capabilities",
+        eyebrow: "Additional capabilities",
+        title: "Make it\nundeniably yours.",
+        items: [
+          {
+            title: "Custom workflows",
+            body: "Screens and job flows shaped to how your fleet actually runs.",
+            image: "/img/features/custom-workflows.jpg",
+          },
+          {
+            title: "Value-add services",
+            body: "Meet & greet, amenities, and VIP extras beyond the transfer.",
+            image: "/img/features/value-add-services.jpg",
+          },
+          {
+            title: "Automations",
+            body: "Triggers and handoffs that cut repetitive ops work.",
+            image: "/img/features/automations.jpg",
+          },
+          {
+            title: "Affiliate integrations",
+            body: "Partners and channels plugged into the same booking stack.",
+            image: "/img/features/affiliate-integrations.jpg",
+          },
+          {
+            title: "AI voice agents",
+            body: "Voice that answers, books, and updates without the queue.",
+            image: "/img/features/ai-voice-agents.jpg",
+          },
+        ],
+      },
+      {
+        id: "scale",
+        eyebrow: "Scale",
+        title: "Scale with\nconfidence.",
+        items: [
           {
             title: "Multiple locations",
-            body: "Run several bases or cities from one connected operation.",
+            body: "Add bases and cities without rebuilding the operation.",
             image: "/img/features/multiple-locations.jpg",
+          },
+          {
+            title: "Expand your reach",
+            body: "Grow into new markets and channels on the same platform.",
+            image: "/img/features/expand-reach.jpg",
+          },
+          {
+            title: "Partners and affiliates",
+            body: "Bring partners and affiliates into the book with shared tooling.",
+            image: "/img/features/partners-affiliates.jpg",
           },
         ],
       },
