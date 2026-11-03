@@ -3,6 +3,8 @@
 import { useEffect, useState, type FormEvent, type ReactNode } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { useDemo } from "@/components/demo/DemoProvider";
+import { Button } from "@/components/ui/Button";
+import { Field, SelectField } from "@/components/ui/Field";
 import {
   accountingTools,
   amenities,
@@ -14,9 +16,8 @@ import {
   roles,
   segments,
 } from "@/content/demo";
+import { EASE } from "@/lib/motion";
 import { lockScroll, unlockScroll } from "@/lib/scroll-lock";
-
-const EASE = [0.22, 1, 0.36, 1] as const;
 
 const emptyForm = {
   segment: "",
@@ -117,24 +118,24 @@ export function DemoOverlay() {
           <div className="mx-auto w-full max-w-[920px] px-5 py-20 md:px-8 md:py-24">
             {submitted ? (
               <div className="py-24 text-center">
-                <h2 className="h-display text-h2">We’ll be in touch shortly.</h2>
-                <p className="mx-auto mt-4 max-w-md text-lead text-mist">
+                <h2 className="heading">We’ll be in touch shortly.</h2>
+                <p className="lead mx-auto mt-4 max-w-md">
                   Thanks for requesting a demo. A member of the Depesch team will
                   reach out to schedule a walkthrough.
                 </p>
-                <button
-                  type="button"
+                <Button
+                  size="lg"
+                  className="mt-10"
                   onClick={closeDemo}
-                  className="btn-accent mt-10 rounded-full px-8 py-4 text-sm"
                 >
                   Close
-                </button>
+                </Button>
               </div>
             ) : (
               <form onSubmit={onSubmit} className="flex flex-col gap-10">
                 <h2
                   id="demo-title"
-                  className="h-display text-center text-[1.65rem] uppercase tracking-[0.06em] sm:text-[2rem]"
+                  className="heading text-center text-[1.65rem] sm:text-[2rem]"
                 >
                   Let us show you how Depesch can impact your business
                 </h2>
@@ -323,13 +324,10 @@ export function DemoOverlay() {
                 </fieldset>
 
                 <div className="flex justify-center pt-2">
-                  <button
-                    type="submit"
-                    className="btn-accent inline-flex items-center gap-3 rounded-full px-8 py-4 text-sm"
-                  >
+                  <Button type="submit" size="lg" className="gap-3">
                     Request a Demo
                     <span aria-hidden>→</span>
-                  </button>
+                  </Button>
                 </div>
               </form>
             )}
@@ -337,81 +335,6 @@ export function DemoOverlay() {
         </motion.div>
       ) : null}
     </AnimatePresence>
-  );
-}
-
-function Field({
-  label,
-  value,
-  onChange,
-  required,
-  type = "text",
-  placeholder,
-  className = "",
-}: {
-  label: string;
-  value: string;
-  onChange: (v: string) => void;
-  required?: boolean;
-  type?: string;
-  placeholder?: string;
-  className?: string;
-}) {
-  return (
-    <label className={`relative block ${className}`}>
-      <span className="absolute -top-2 left-3 z-[1] bg-ink px-1 text-[11px] text-mist">
-        {label}
-        {required ? " *" : ""}
-      </span>
-      <input
-        required={required}
-        type={type}
-        value={value}
-        placeholder={placeholder}
-        onChange={(e) => onChange(e.target.value)}
-        className="w-full rounded-lg border border-ink-3 bg-transparent px-4 py-3.5 text-base text-white outline-none placeholder:text-muted/70 focus:border-white"
-      />
-    </label>
-  );
-}
-
-function SelectField({
-  label,
-  value,
-  onChange,
-  options,
-  required,
-  className = "",
-}: {
-  label: string;
-  value: string;
-  onChange: (v: string) => void;
-  options: string[];
-  required?: boolean;
-  className?: string;
-}) {
-  return (
-    <label className={`relative block ${className}`}>
-      <span className="absolute -top-2 left-3 z-[1] bg-ink px-1 text-[11px] text-mist">
-        {label}
-        {required ? " *" : ""}
-      </span>
-      <select
-        required={required}
-        value={value}
-        onChange={(e) => onChange(e.target.value)}
-        className="w-full appearance-none rounded-lg border border-ink-3 bg-ink px-4 py-3.5 text-base text-white outline-none focus:border-white"
-      >
-        <option value="" disabled>
-          Select...
-        </option>
-        {options.map((opt) => (
-          <option key={opt} value={opt}>
-            {opt}
-          </option>
-        ))}
-      </select>
-    </label>
   );
 }
 

@@ -94,7 +94,7 @@ export function Testimonials() {
             <span className="font-display text-7xl leading-none text-white/20">
               &ldquo;
             </span>
-            <blockquote className="font-display -mt-6 max-w-3xl text-h4 font-medium leading-relaxed text-white">
+            <blockquote className="heading-sm -mt-6 max-w-3xl font-medium leading-relaxed">
               {item.quote}
             </blockquote>
             <div className="mt-8 flex items-center justify-center gap-3">
@@ -105,7 +105,7 @@ export function Testimonials() {
                 <p className="font-display font-semibold text-white">
                   {item.author}
                 </p>
-                <p className="text-small text-muted">{item.role}</p>
+                <p className="caption">{item.role}</p>
               </div>
             </div>
           </article>

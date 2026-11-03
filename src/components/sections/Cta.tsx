@@ -1,6 +1,7 @@
 import { DemoButton } from "@/components/demo/DemoButton";
 import { Reveal } from "@/components/ui/Reveal";
-import { SiteInset, SiteMeasure, siteSectionClass } from "@/components/ui/SiteInset";
+import { Container } from "@/components/ui/Container";
+import { SectionHeader } from "@/components/ui/SectionHeader";
 import { copy } from "@/content/pages";
 
 function ArrowChase() {
@@ -38,24 +39,23 @@ function ArrowChase() {
 
 export function Cta() {
   return (
-    <section className={`relative overflow-hidden ${siteSectionClass}`}>
+    <section className="section relative overflow-hidden">
       <div className="glow pointer-events-none absolute inset-x-0 bottom-0 h-[420px] rotate-180" />
-      <SiteInset className="relative">
-        <SiteMeasure className="max-w-[920px]">
-          <Reveal className="overflow-hidden rounded-3xl border border-ink-3/60 bg-ink-2/60 p-10 text-center md:p-16">
-            <h2 className="h-display text-h2">{copy.cta.title}</h2>
-            <p className="mx-auto mt-5 max-w-xl text-lead leading-relaxed text-mist">
-              {copy.cta.subtitle}
-            </p>
-            <div className="mt-9 flex justify-center">
-              <DemoButton className="group inline-flex h-10 items-center gap-2 rounded-xl bg-accent px-5 font-display text-[13px] font-medium uppercase tracking-[0.04em] text-accent-contrast transition-colors duration-300 hover:bg-white">
-                Request a Demo
-                <ArrowChase />
-              </DemoButton>
-            </div>
-          </Reveal>
-        </SiteMeasure>
-      </SiteInset>
+      <Container className="relative max-w-[920px]">
+        <Reveal className="overflow-hidden rounded-3xl border border-ink-3/60 bg-ink-2/60 p-10 text-center md:p-16">
+          <SectionHeader
+            title={copy.cta.title}
+            body={copy.cta.body}
+            align="center"
+          />
+          <div className="mt-9 flex justify-center">
+            <DemoButton className="group hover:bg-white">
+              Request a Demo
+              <ArrowChase />
+            </DemoButton>
+          </div>
+        </Reveal>
+      </Container>
     </section>
   );
 }

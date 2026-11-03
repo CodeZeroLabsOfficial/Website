@@ -14,7 +14,7 @@ This is a single-product marketing site. Keep it small.
 | `src/components/demo/` | Request-a-demo overlay |
 | `src/components/legal/` | `LegalPage` document template |
 | `src/components/sections/` | Page blocks (Hero, Features, Cta, …) |
-| `src/components/ui/` | Primitives with no page knowledge |
+| `src/components/ui/` | UI kit primitives (Container, Button, Field, SectionHeader, …) |
 | `src/content/` | All copy, nav, URLs, form options |
 | `src/lib/` | Non-UI behavior only |
 

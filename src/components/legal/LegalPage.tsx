@@ -1,6 +1,6 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
-import { SiteInset, SiteMeasure } from "@/components/ui/SiteInset";
+import { Container } from "@/components/ui/Container";
 import { legalEntity } from "@/content/site";
 import type {
   LegalBlock,
@@ -9,55 +9,46 @@ import type {
   LegalListItem,
 } from "@/content/legal/types";
 
-const bodyClass = "mt-4 text-[20px] leading-[26px] tracking-[-0.03em] text-mist";
+const bodyClass = "body mt-4";
 
 export function LegalPage({ document }: { document: LegalDocument }) {
   return (
-    <SiteMeasure className="max-w-[1320px]">
-      <SiteInset as="article" className="w-full pb-[7.5rem] pt-[150px] md:pt-[180px] xl:pt-[200px]">
-        <h1 className="font-display text-[2.5rem] font-medium uppercase leading-none tracking-[-0.04em] text-white sm:text-5xl lg:whitespace-nowrap lg:text-[80px] lg:leading-[80px]">
-          {document.title}
-        </h1>
-        <div className="mt-16 grid gap-10 md:grid-cols-[300px_minmax(0,800px)] md:gap-x-3">
-          <aside>
-            <p className="text-xs text-muted">Last updated:</p>
-            <p className="mt-1 text-xs text-white">{legalEntity.updated}</p>
-          </aside>
-          <div>
-            <p className="font-display text-xl font-medium leading-[1.2] tracking-[-0.02em] text-white sm:text-[32px] sm:leading-[38.4px] sm:tracking-[-0.02em]">
-              {document.lead}
+    <Container
+      as="article"
+      className="max-w-[1320px] pb-[7.5rem] pt-[150px] md:pt-[180px] xl:pt-[200px]"
+    >
+      <h1 className="heading">{document.title}</h1>
+      <div className="mt-16 grid gap-10 md:grid-cols-[300px_minmax(0,800px)] md:gap-x-3">
+        <aside>
+          <p className="caption">Last updated:</p>
+          <p className="mt-1 text-xs text-white">{legalEntity.updated}</p>
+        </aside>
+        <div>
+          <p className="lead text-white">{document.lead}</p>
+          {document.preface?.map((paragraph) => (
+            <p key={paragraph} className={bodyClass}>
+              {paragraph}
             </p>
-            {document.preface?.map((paragraph) => (
-              <p key={paragraph} className={bodyClass}>
-                {paragraph}
-              </p>
+          ))}
+          <div className="mt-16">
+            {document.sections.map((section) => (
+              <section key={section.title} className="mt-16 first:mt-0">
+                <h2 className="heading-sm">{section.title}</h2>
+                {section.blocks.map((block, index) => (
+                  <Block key={index} block={block} />
+                ))}
+              </section>
             ))}
-            <div className="mt-16">
-              {document.sections.map((section) => (
-                <section key={section.title} className="mt-16 first:mt-0">
-                  <h2 className="font-display text-[1.75rem] font-medium leading-[1.3] tracking-[-0.02em] text-white">
-                    {section.title}
-                  </h2>
-                  {section.blocks.map((block, index) => (
-                    <Block key={index} block={block} />
-                  ))}
-                </section>
-              ))}
-            </div>
           </div>
         </div>
-      </SiteInset>
-    </SiteMeasure>
+      </div>
+    </Container>
   );
 }
 
 function Block({ block }: { block: LegalBlock }) {
   if (block.type === "h3") {
-    return (
-      <h3 className="font-display mt-8 text-[1.25rem] font-medium tracking-[-0.02em] text-white">
-        {block.text}
-      </h3>
-    );
+    return <h3 className="heading-sm mt-8">{block.text}</h3>;
   }
   if (block.type === "p") {
     return <p className={bodyClass}>{renderInline(block.text)}</p>;

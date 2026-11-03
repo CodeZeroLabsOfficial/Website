@@ -13,8 +13,8 @@ Single-product marketing site. Routes compose; chrome is global; copy is data.
 - `src/components/demo/` — demo overlay
 - `src/components/legal/LegalPage.tsx` — legal document template
 - `src/components/sections/` — marketing blocks
-- `src/components/ui/` — SiteInset, Icon, Reveal
+- `src/components/ui/` — UI kit (Container, Button, Field, SectionHeader, Icon, Reveal)
 - `src/content/` — all copy and site constants
-- `src/lib/` — behavior only (e.g. scroll lock)
+- `src/lib/` — behavior only (motion, scroll lock)
 
 Follow `.cursor/rules/` for structure, naming, and UI conventions.

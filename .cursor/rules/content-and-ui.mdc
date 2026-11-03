@@ -1,15 +1,40 @@
 ---
-description: Copy lives in content/; shared inset and labels; no competitor names
+description: Copy lives in content/; UI kit primitives; no competitor names
 alwaysApply: true
 ---
 
-# Content and UI
+# Content and UI kit
 
 Copy, URLs, entity details, nav, FAQs, and form options live in `src/content/`. Components render that data. Do not hardcode ACN, support email, login URL, or legal body copy in JSX.
 
 Legal documents are data (`src/content/legal/`) rendered by `LegalPage`. Do not add `LegalH2` / `LegalP` public helpers. Change title size, grid, or meta rail in `LegalPage` only.
 
-Horizontal padding is `siteInsetClass` from `src/components/ui/SiteInset.tsx` (`px-5 md:px-8 lg:px-10`). Vertical section padding is `siteSectionClass` (`py-24 md:py-32`). Stacked chapter gaps are `siteStackClass` (`gap-24 md:gap-32`). Use `SiteInset` / `SiteMeasure` instead of repeating those classes. Full-bleed blocks (Hero, film stills, testimonials) stay unpadded.
+## UI kit (use these — do not invent section-specific names)
+
+**Layout** (`Container`, `.container`, `.section`, `.stack`, `.inset`)
+- `Container` — centered measure + horizontal padding
+- `.section` — vertical section padding
+- `.stack` — vertical gap between blocks
+- `.inset` — horizontal padding only (nav)
+- Full-bleed blocks (Hero, film stills, testimonials) stay unpadded
+
+**Type roles** (CSS classes — not per-section names)
+- `.eyebrow` · `.heading` · `.heading-sm` · `.lead` · `.body` · `.caption`
+- Hero only: `.lockup-kicker` / `.lockup-title`
+- Size scale tokens: `text-xs` … `text-7xl` (prefer roles over raw sizes in sections)
+- `SectionHeader` composes eyebrow → heading → lead
+
+**Controls**
+- `Button` — `variant`: accent | ghost | link; `size`: sm | md | lg
+- `DemoButton` — opens demo overlay; wraps `Button` (behavior only)
+- `.chip` — selectable list row
+- `Field` / `SelectField` — form controls
+
+**Content keys** (generic, relevant)
+- Shared: `eyebrow`, `title`, `body`
+- Lists: `items` or `highlights` when that meaning fits
+- FAQ: `question` / `answer`
+- Testimonials: `quote`, `author`, `role`
 
 Nav/menu/CTA labels stay uppercase (`Request a Demo`, `Log in`, `Menu`). Do not mention third-party reference sites in code, comments, or commit messages.
 

@@ -4,32 +4,26 @@ import { useEffect, useRef, useState } from "react";
 import { DeviceFrame } from "@/components/ui/DeviceFrame";
 import { Icon } from "@/components/ui/Icon";
 import { Reveal, RevealItem, RevealStagger } from "@/components/ui/Reveal";
-import {
-  SiteInset,
-  SiteMeasure,
-  siteSectionClass,
-  siteStackClass,
-} from "@/components/ui/SiteInset";
+import { Container } from "@/components/ui/Container";
+import { SectionHeader } from "@/components/ui/SectionHeader";
 import { copy } from "@/content/pages";
+import type { Persona } from "@/content/types";
 
 const pinClass =
   "lg:sticky lg:top-[72px] lg:flex lg:h-[calc(100vh-72px)] lg:flex-col lg:justify-center lg:self-start";
 const frameClass =
   "flex min-h-[80vh] flex-col items-center justify-center py-16 lg:min-h-[calc(100vh-72px)]";
 
-type Persona = (typeof copy.personas)[number];
 type Item = Persona["items"][number];
 
 function FramePreview({ item }: { item: Item }) {
   return (
     <div>
       <DeviceFrame>
-        <p className="font-display text-[10px] font-medium uppercase tracking-[0.16em] text-muted">
+        <p className="font-display text-xs font-medium uppercase tracking-[0.16em] text-muted">
           {item.frame}
         </p>
-        <p className="mt-3 font-display text-lg font-medium leading-snug text-white">
-          {item.label}
-        </p>
+        <p className="heading-sm mt-3 leading-snug">{item.label}</p>
         <div className="mt-6 space-y-2">
           <div className="h-24 rounded-2xl bg-white/5" />
           <div className="h-12 rounded-2xl bg-white/5" />
@@ -37,10 +31,8 @@ function FramePreview({ item }: { item: Item }) {
         </div>
       </DeviceFrame>
       <p className="mt-6 text-center">
-        <span className="font-display text-lg font-medium text-white">
-          {item.frame}
-        </span>
-        <span className="mt-1 block text-small text-muted">{item.label}</span>
+        <span className="heading-sm">{item.frame}</span>
+        <span className="caption mt-1 block">{item.label}</span>
       </p>
     </div>
   );
@@ -91,16 +83,12 @@ function PersonaBand({
         className={`${pinClass} ${pinEnd ? "lg:col-start-2 lg:row-start-1" : ""}`}
       >
         <Reveal>
-          <p className="flex items-center gap-2 font-display text-eyebrow font-semibold uppercase tracking-[0.12em] text-muted">
-            <span className="pulse-dot" aria-hidden="true" />
-            {persona.eyebrow}
-          </p>
-          <h2 className="h-display mt-4 whitespace-pre-line text-h2">
-            {persona.title}
-          </h2>
-          <p className="mt-4 text-base leading-6 text-muted">
-            {persona.body}
-          </p>
+          <SectionHeader
+            eyebrow={persona.eyebrow}
+            title={persona.title}
+            pulse
+          />
+          <p className="body mt-4 leading-6 text-muted">{persona.body}</p>
         </Reveal>
         <RevealStagger className="mt-6 flex w-max max-w-full flex-col gap-3" stagger={0.1}>
           {persona.items.map((item, index) => (
@@ -132,16 +120,14 @@ function PersonaBand({
 
 export function PersonaTour() {
   return (
-    <section id="positioning" className={`${siteStackClass} ${siteSectionClass}`}>
+    <section id="positioning" className="section stack">
       {copy.personas.map((persona, index) => (
-        <SiteInset key={persona.eyebrow}>
-          <SiteMeasure>
-            <PersonaBand
-              persona={persona}
-              pin={index % 2 === 1 ? "end" : "start"}
-            />
-          </SiteMeasure>
-        </SiteInset>
+        <Container key={persona.eyebrow}>
+          <PersonaBand
+            persona={persona}
+            pin={index % 2 === 1 ? "end" : "start"}
+          />
+        </Container>
       ))}
     </section>
   );

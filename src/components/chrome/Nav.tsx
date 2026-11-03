@@ -5,12 +5,11 @@ import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { Logo } from "@/components/chrome/Logo";
 import { DemoButton } from "@/components/demo/DemoButton";
-import { siteInsetClass } from "@/components/ui/SiteInset";
+import { insetClass } from "@/components/ui/Container";
 import { LOGIN_URL, SUPPORT_EMAIL, legalNav, siteNav } from "@/content/site";
 import { lockScroll, unlockScroll } from "@/lib/scroll-lock";
 
-const linkClass =
-  "font-display text-[12px] font-medium uppercase tracking-[0.14em] text-white transition-opacity duration-300 hover:opacity-60";
+const linkClass = "btn-link";
 
 const NAV_DELAY = 280;
 
@@ -83,7 +82,7 @@ export function Nav() {
             : "bg-transparent border-b border-transparent"
       }`}
     >
-      <nav className={`relative flex h-16 w-full shrink-0 items-center justify-between md:h-[72px] ${siteInsetClass}`}>
+      <nav className={`relative flex h-16 w-full shrink-0 items-center justify-between md:h-[72px] ${insetClass}`}>
         <button
           type="button"
           aria-label={open ? "Close menu" : "Open menu"}
@@ -107,9 +106,7 @@ export function Nav() {
               }`}
             />
           </span>
-          <span className="font-display text-[12px] font-medium uppercase tracking-[0.14em] text-white">
-            Menu
-          </span>
+          <span className="btn-link">Menu</span>
         </button>
 
         <Link
@@ -125,7 +122,7 @@ export function Nav() {
         </Link>
 
         <div className="flex items-center gap-6 md:gap-10">
-          <DemoButton className={`${linkClass} hidden sm:inline`}>
+          <DemoButton variant="link" className="hidden sm:inline">
             Request a Demo
           </DemoButton>
           <a
@@ -161,7 +158,7 @@ export function Nav() {
         }`}
       >
         <div className="overflow-hidden">
-          <div className={`flex flex-col gap-10 py-8 md:py-10 ${siteInsetClass}`}>
+          <div className={`flex flex-col gap-10 py-8 md:py-10 ${insetClass}`}>
             <ul className="flex flex-col gap-3 md:gap-4">
               {siteNav.map((item) => (
                 <li key={item.href}>
@@ -178,7 +175,7 @@ export function Nav() {
 
             <div className="flex flex-col justify-between gap-6 border-t border-ink-3/60 pt-6 sm:flex-row sm:items-end">
               <div>
-                <p className="text-[11px] uppercase tracking-[0.16em] text-muted">
+                <p className="caption uppercase tracking-[0.16em]">
                   Need support?
                 </p>
                 <a

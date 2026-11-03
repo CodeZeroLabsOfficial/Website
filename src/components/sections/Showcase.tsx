@@ -3,7 +3,8 @@
 import Image from "next/image";
 import { Icon } from "@/components/ui/Icon";
 import { Reveal } from "@/components/ui/Reveal";
-import { SiteInset, SiteMeasure, siteSectionClass } from "@/components/ui/SiteInset";
+import { Container } from "@/components/ui/Container";
+import { SectionHeader } from "@/components/ui/SectionHeader";
 import { copy } from "@/content/pages";
 
 export function Showcase() {
@@ -23,10 +24,12 @@ export function Showcase() {
         <div className="absolute inset-0 bg-gradient-to-t from-ink via-transparent to-ink/40" />
         <div className="relative z-10 mx-auto flex h-full max-w-[1200px] flex-col items-center justify-center px-5 text-center">
           <Reveal>
-            <p className="eyebrow">{showcase.eyebrow}</p>
-            <h2 className="h-display mx-auto mt-5 max-w-3xl text-h2">
-              {showcase.title}
-            </h2>
+            <SectionHeader
+              eyebrow={showcase.eyebrow}
+              title={showcase.title}
+              align="center"
+              className="mx-auto max-w-3xl"
+            />
           </Reveal>
           <Reveal delay={0.15}>
             <button
@@ -42,29 +45,27 @@ export function Showcase() {
           </Reveal>
         </div>
       </div>
-      <SiteInset className={siteSectionClass}>
-        <SiteMeasure>
+      <div className="section">
+        <Container>
           <div className="grid gap-10 md:grid-cols-[1fr_1.1fr] md:items-center">
             <Reveal>
-              <p className="max-w-lg text-lead leading-relaxed text-mist">
-                {showcase.body}
-              </p>
+              <p className="lead max-w-lg">{showcase.body}</p>
             </Reveal>
             <ul className="grid gap-4 sm:grid-cols-3">
-              {showcase.bullets.map((bullet, index) => (
-                <Reveal key={bullet} delay={0.08 * (index + 1)}>
+              {showcase.highlights.map((highlight, index) => (
+                <Reveal key={highlight} delay={0.08 * (index + 1)}>
                   <li className="h-full rounded-2xl border border-ink-3/60 bg-ink-2/40 p-5">
                     <span className="font-display text-3xl font-bold text-white/30">
                       {String(index + 1).padStart(2, "0")}
                     </span>
-                    <p className="mt-2 text-base text-white">{bullet}</p>
+                    <p className="body mt-2 text-white">{highlight}</p>
                   </li>
                 </Reveal>
               ))}
             </ul>
           </div>
-        </SiteMeasure>
-      </SiteInset>
+        </Container>
+      </div>
     </section>
   );
 }

@@ -4,8 +4,7 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { Logo } from "@/components/chrome/Logo";
 import { copy } from "@/content/pages";
-
-const EASE = [0.22, 1, 0.36, 1] as const;
+import { EASE } from "@/lib/motion";
 
 export function Hero() {
   const { hero } = copy;
