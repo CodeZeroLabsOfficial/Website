@@ -81,20 +81,32 @@ body {
 .lockup-kicker {
   font-family: var(--font-display);
   font-weight: 600;
-  font-size: 14px;
-  line-height: 1.6;
-  letter-spacing: 0.18em;
+  font-size: 11px;
+  line-height: 1.2;
+  letter-spacing: 2px;
   text-transform: uppercase;
   color: var(--white);
 }
 .lockup-title {
   font-family: var(--font-display);
   font-weight: 600;
-  font-size: 1.75rem;
-  line-height: 1.05;
-  letter-spacing: 0.07em;
+  font-size: 25px;
+  line-height: 1.2;
+  letter-spacing: 3px;
   text-transform: uppercase;
   color: var(--white);
+}
+@media (min-width: 768px) {
+  .lockup-kicker {
+    font-size: 14px;
+    line-height: 1.6;
+    letter-spacing: 0.18em;
+  }
+  .lockup-title {
+    font-size: 36px;
+    line-height: 1.05;
+    letter-spacing: 0.07em;
+  }
 }
 @media (min-width: 1024px) {
   .lockup-kicker {

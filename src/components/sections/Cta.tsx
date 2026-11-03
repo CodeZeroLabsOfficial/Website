@@ -48,7 +48,7 @@ export function Cta() {
               {copy.cta.subtitle}
             </p>
             <div className="mt-9 flex justify-center">
-              <DemoButton className="group inline-flex h-12 items-center gap-2 rounded-xl bg-accent px-5 font-display text-[13px] font-medium uppercase tracking-[0.04em] text-accent-contrast transition-colors duration-300 hover:bg-white">
+              <DemoButton className="group inline-flex h-10 items-center gap-2 rounded-xl bg-accent px-5 font-display text-[13px] font-medium uppercase tracking-[0.04em] text-accent-contrast transition-colors duration-300 hover:bg-white">
                 Request a Demo
                 <ArrowChase />
               </DemoButton>
