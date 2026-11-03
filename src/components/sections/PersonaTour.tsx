@@ -98,7 +98,7 @@ function PersonaBand({
           <h2 className="h-display mt-4 whitespace-pre-line text-h2">
             {persona.title}
           </h2>
-          <p className="mt-4 max-w-[350px] text-base leading-6 text-muted">
+          <p className="mt-4 text-base leading-6 text-muted">
             {persona.body}
           </p>
         </Reveal>
