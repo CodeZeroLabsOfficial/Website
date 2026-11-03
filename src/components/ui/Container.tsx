@@ -5,16 +5,18 @@ export const insetClass = "inset";
 
 export function Container({
   as: Tag = "div",
+  id,
   className = "",
   children,
 }: {
   as?: ElementType;
+  id?: string;
   className?: string;
   children: ReactNode;
 }) {
   const maxWidth = /\bmax-w-/.test(className) ? "" : "max-w-[1200px]";
   return (
-    <Tag className={`container ${maxWidth} ${className}`.trim()}>
+    <Tag id={id} className={`container ${maxWidth} ${className}`.trim()}>
       {children}
     </Tag>
   );

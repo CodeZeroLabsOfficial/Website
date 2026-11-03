@@ -1,6 +1,13 @@
 import type { IconName } from "@/components/ui/Icon";
 import { SUPPORT_EMAIL } from "@/content/site";
-import type { FaqItem, FeatureItem, Persona, Testimonial } from "@/content/types";
+import type {
+  FaqItem,
+  FeatureChapter,
+  FeatureItem,
+  FeatureJump,
+  Persona,
+  Testimonial,
+} from "@/content/types";
 
 export const meta = {
   home: {
@@ -205,38 +212,142 @@ export const copy = {
     eyebrow: "Built for the fleet",
     title: "Everything dispatch and drivers need",
     body: "One platform that connects passengers, drivers, and operations in real time.",
-    items: [
+    jumps: [
+      { label: "Own the experience", href: "#customer-experience" },
+      { label: "Focus on the Drive", href: "#dispatch-chaos" },
+      { label: "Orchestrate every journey", href: "#orchestrate-journey" },
+      { label: "Premium features", href: "#premium" },
+    ] satisfies FeatureJump[],
+    chapters: [
       {
-        title: "Smart dispatch",
-        body: "Auto-assign the nearest available chauffeur with live traffic-aware routing.",
-        icon: "route" as IconName,
+        id: "customer-experience",
+        eyebrow: "Capabilities",
+        title: "Own the customer\nexperience",
+        items: [
+          {
+            title: "Branded customer app",
+            body: "Your identity on every screen — elegant, fully customised for the luxury fleets you run.",
+            image: "/img/features/branded-app.jpg",
+          },
+          {
+            title: "Seamless booking",
+            body: "Instant ordering, pre-booking, and payments that clear without friction.",
+            image: "/img/features/booking.jpg",
+          },
+          {
+            title: "Live GPS tracking",
+            body: "Real-time ETA updates so clients always know where their chauffeur is.",
+            image: "/img/features/gps.jpg",
+          },
+        ],
       },
       {
-        title: "Flight tracking",
-        body: "Pickups adjust automatically to real-time flight delays and gate changes.",
-        icon: "clock" as IconName,
+        id: "dispatch-chaos",
+        eyebrow: "Operations",
+        title: "Navigation, status, jobs.\nHandled in one place.",
+        items: [
+          {
+            title: "Dedicated driver app",
+            body: "Jobs, status, and tools in one place — built for the road, not the office.",
+            image: "/img/features/driver-app.jpg",
+          },
+          {
+            title: "Job management",
+            body: "Accept, update, and complete assignments without the radio chatter.",
+            image: "/img/features/job-management.jpg",
+          },
+          {
+            title: "Turn-by-turn navigation",
+            body: "Routing that keeps every pickup and drop-off on track.",
+            image: "/img/features/navigation.jpg",
+          },
+          {
+            title: "Effortless onboarding",
+            body: "Invite drivers to your fleet and onboard them with ease.",
+            image: "/img/features/onboarding.jpg",
+          },
+          {
+            title: "In-app messaging",
+            body: "Talk to clients and dispatch without leaving the job screen.",
+            image: "/img/features/messaging.jpg",
+          },
+          {
+            title: "Vehicle management",
+            body: "Vehicle status, readiness, and details at hand before you roll.",
+            image: "/img/features/vehicle-management.jpg",
+          },
+        ],
       },
       {
-        title: "Account billing",
-        body: "Corporate accounts, cost centers, and itemized monthly invoicing.",
-        icon: "card" as IconName,
+        id: "orchestrate-journey",
+        eyebrow: "Dispatch Management",
+        title: "Every journey,\nperfectly orchestrated",
+        items: [
+          {
+            title: "Account billing",
+            body: "Corporate accounts, cost centers, and itemized invoicing without the chase.",
+            image: "/img/features/billing.jpg",
+          },
+          {
+            title: "Analytics and reporting",
+            body: "See utilisation, revenue, and performance across the fleet in one view.",
+            image: "/img/features/analytics.jpg",
+          },
+          {
+            title: "Compliance management",
+            body: "Licensing, documents, and checks tracked before they become a problem.",
+            image: "/img/features/compliance.jpg",
+          },
+          {
+            title: "Fleet visibility",
+            body: "The whole fleet in view so operations never lose the thread mid-journey.",
+            image: "/img/features/fleet.jpg",
+          },
+          {
+            title: "Live ops board",
+            body: "Jobs, statuses, and assignments running on a single live console.",
+            image: "/img/features/live-ops.jpg",
+          },
+          {
+            title: "Loyalty and promotions",
+            body: "Rewards and offers that keep premium clients coming back.",
+            image: "/img/features/loyalty.jpg",
+          },
+        ],
       },
       {
-        title: "Vetted drivers",
-        body: "Onboarding, licensing, and background checks tracked in one place.",
-        icon: "shield" as IconName,
+        id: "premium",
+        eyebrow: "Premium",
+        title: "Premium features.\nBuilt to scale.",
+        items: [
+          {
+            title: "Automated dispatch",
+            body: "Assignments and notifications that cut the back-and-forth out of operations.",
+            image: "/img/features/dispatch.jpg",
+          },
+          {
+            title: "Booking validation",
+            body: "Catch conflicts, gaps, and bad data before a job hits the road.",
+            image: "/img/features/booking-validation.jpg",
+          },
+          {
+            title: "Dynamic pricing",
+            body: "Configure rates that flex with demand, distance, and service class.",
+            image: "/img/features/dynamic-pricing.jpg",
+          },
+          {
+            title: "Driver ratings",
+            body: "Quality scores that keep the fleet sharp and clients confident.",
+            image: "/img/features/driver-ratings.jpg",
+          },
+          {
+            title: "Multiple locations",
+            body: "Run several bases or cities from one connected operation.",
+            image: "/img/features/multiple-locations.jpg",
+          },
+        ],
       },
-      {
-        title: "5-star experience",
-        body: "In-ride preferences, climate, music, and refreshments saved per client.",
-        icon: "star" as IconName,
-      },
-      {
-        title: "24/7 concierge",
-        body: "In-app support and ride changes handled around the clock.",
-        icon: "phone" as IconName,
-      },
-    ] satisfies FeatureItem[],
+    ] satisfies FeatureChapter[],
   },
   cta: {
     title: "Ready to Own the Luxury Transfer Experience?",

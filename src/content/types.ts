@@ -11,6 +11,24 @@ export type FeatureItem = {
   icon: IconName;
 };
 
+export type FeatureJump = {
+  label: string;
+  href: string;
+};
+
+export type FeatureCapability = {
+  title: string;
+  body: string;
+  image: string;
+};
+
+export type FeatureChapter = {
+  id: string;
+  eyebrow: string;
+  title: string;
+  items: FeatureCapability[];
+};
+
 export type PersonaItem = {
   label: string;
   frame: string;
