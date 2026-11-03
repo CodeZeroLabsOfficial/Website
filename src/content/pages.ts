@@ -7,6 +7,11 @@ export const meta = {
     description:
       "A white-glove booking and fleet platform for executive car services: real-time dispatch, flight tracking, account billing, and a five-star ride experience.",
   },
+  platform: {
+    title: "Platform — Depesch",
+    description:
+      "The Depesch platform for luxury fleets: passenger, driver, and dispatch tools connected in one system.",
+  },
   features: {
     title: "Features — Depesch",
     description:
@@ -149,6 +154,44 @@ export const copy = {
       {
         q: "What can't it do yet?",
         a: "Some deeper workflow and dashboard customisations are still on the roadmap. Request a Demo and we will be clear about what ships today.",
+      },
+    ],
+  },
+  platform: {
+    eyebrow: "The platform",
+    title: "One system for every seat in the fleet",
+    subtitle:
+      "Passenger, driver, and dispatch experiences built to work together — not stitched on later.",
+    items: [
+      {
+        title: "Smart dispatch",
+        body: "Auto-assign the nearest available chauffeur with live traffic-aware routing.",
+        icon: "route" as IconName,
+      },
+      {
+        title: "Flight tracking",
+        body: "Pickups adjust automatically to real-time flight delays and gate changes.",
+        icon: "clock" as IconName,
+      },
+      {
+        title: "Account billing",
+        body: "Corporate accounts, cost centers, and itemized monthly invoicing.",
+        icon: "card" as IconName,
+      },
+      {
+        title: "Vetted drivers",
+        body: "Onboarding, licensing, and background checks tracked in one place.",
+        icon: "shield" as IconName,
+      },
+      {
+        title: "5-star experience",
+        body: "In-ride preferences, climate, music, and refreshments saved per client.",
+        icon: "star" as IconName,
+      },
+      {
+        title: "24/7 concierge",
+        body: "In-app support and ride changes handled around the clock.",
+        icon: "phone" as IconName,
       },
     ],
   },

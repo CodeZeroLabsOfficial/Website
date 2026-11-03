@@ -16,6 +16,7 @@ export const legalNav = [
 
 export const siteNav = [
   { label: "Home", href: "/" },
+  { label: "Platform", href: "/platform" },
   { label: "Features", href: "/features" },
   { label: "Support", href: "/support" },
 ] as const;
