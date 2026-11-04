@@ -71,7 +71,7 @@ export const copy = {
       ],
     },
     {
-      eyebrow: "For Dispatch & Drivers",
+      eyebrow: "For Drivers",
       title: "Operational chaos.\nHandled forever.",
       body: "Bookings, replies, reminders & reschedules. Let your drivers focus on the ride.",
       items: [
