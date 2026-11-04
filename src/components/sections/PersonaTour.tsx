@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 import { DeviceFrame } from "@/components/ui/DeviceFrame";
 import { Icon } from "@/components/ui/Icon";
 import { Reveal, RevealItem, RevealStagger } from "@/components/ui/Reveal";
@@ -10,30 +11,43 @@ import { copy } from "@/content/pages";
 import type { Persona } from "@/content/types";
 
 const pinClass =
-  "lg:sticky lg:top-[72px] lg:flex lg:h-[calc(100vh-72px)] lg:flex-col lg:justify-center lg:self-start";
+  "lg:sticky lg:top-[72px] lg:flex lg:h-[calc(100vh-72px)] lg:flex-col lg:justify-start lg:pt-16 lg:self-start";
 const frameClass =
-  "flex min-h-[80vh] flex-col items-center justify-center py-16 lg:min-h-[calc(100vh-72px)]";
+  "flex min-h-[80vh] flex-col justify-start py-16 lg:min-h-[calc(100vh-72px)]";
 
 type Item = Persona["items"][number];
 
 function FramePreview({ item }: { item: Item }) {
+  const title = item.body ? item.label : item.frame;
+  const description = item.body ?? item.label;
+
   return (
-    <div>
-      <DeviceFrame>
-        <p className="font-display text-xs font-medium uppercase tracking-[0.16em] text-muted">
-          {item.frame}
-        </p>
-        <p className="heading-sm mt-3 leading-snug">{item.label}</p>
-        <div className="mt-6 space-y-2">
-          <div className="h-24 rounded-2xl bg-white/5" />
-          <div className="h-12 rounded-2xl bg-white/5" />
-          <div className="h-12 rounded-2xl bg-white/[0.04]" />
-        </div>
-      </DeviceFrame>
-      <p className="mt-6 text-center">
-        <span className="heading-sm">{item.frame}</span>
-        <span className="caption mt-1 block">{item.label}</span>
-      </p>
+    <div className="w-full">
+      <div className="max-w-[584px] text-left">
+        <h3 className="font-display text-[21px] font-semibold uppercase leading-8 text-white">
+          {title}
+        </h3>
+        <p className="body mt-4 max-w-[584px] text-muted">{description}</p>
+      </div>
+      <div className="mt-10 flex justify-center">
+        {item.image ? (
+          <Image
+            src={item.image}
+            alt=""
+            width={458}
+            height={954}
+            className="h-auto w-full max-w-[234px]"
+          />
+        ) : (
+          <DeviceFrame>
+            <div className="space-y-2">
+              <div className="h-24 rounded-2xl bg-white/5" />
+              <div className="h-12 rounded-2xl bg-white/5" />
+              <div className="h-12 rounded-2xl bg-white/[0.04]" />
+            </div>
+          </DeviceFrame>
+        )}
+      </div>
     </div>
   );
 }

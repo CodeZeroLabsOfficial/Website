@@ -26,7 +26,9 @@ export type FeatureChapter = {
 export type PersonaItem = {
   label: string;
   frame: string;
+  body?: string;
   icon: IconName;
+  image?: string;
 };
 
 export type Persona = {

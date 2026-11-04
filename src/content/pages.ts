@@ -46,16 +46,21 @@ export const copy = {
         {
           label: "Elegant, fully branded customer app",
           frame: "Branded app",
+          body: "A luxury experience begins with a booking worthy of the ride — your logo, your colours, your name.",
           icon: "device" as IconName,
+          image: "/img/branded-app.png",
         },
         {
-          label: "Seamless booking and instant payments",
+          label: "Instant quotes and seamless bookings",
           frame: "Booking",
+          body: "Instant quotes, vehicle class selection, and pay with a saved card — one-tap checkout, no phone calls.",
           icon: "calendar" as IconName,
+          image: "/img/booking-details.png",
         },
         {
           label: "Live GPS tracking with ETA updates",
           frame: "Live tracking",
+          body: "Live status, ETAs, driver and vehicle details, and real-time chauffeur location — from confirmation to curb.",
           icon: "globe" as IconName,
         },
         {

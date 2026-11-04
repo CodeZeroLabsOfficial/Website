@@ -118,18 +118,24 @@ export function DispatchPro() {
               >
                 <span className="relative block h-0.5 w-full overflow-hidden rounded-full bg-ink-3 transition-colors group-hover:bg-ink-3/80">
                   <span
-                    key={active ? `fill-${index}` : `idle-${i}`}
+                    key={
+                      active ? `fill-${index}-${inView}` : `idle-${i}`
+                    }
                     className={`absolute inset-y-0 left-0 w-full origin-left bg-white ${
                       active && reduceMotion ? "scale-x-100" : ""
                     } ${!active ? "scale-x-0" : ""}`}
                     style={
-                      active && !reduceMotion && !interacted.current
+                      active &&
+                      inView &&
+                      !reduceMotion &&
+                      !interacted.current
                         ? {
                             animation: `progress-fill ${INTERVAL_MS}ms linear forwards`,
                           }
-                        : active
+                        : active &&
+                            (reduceMotion || interacted.current)
                           ? { transform: "scaleX(1)" }
-                          : undefined
+                          : { transform: "scaleX(0)" }
                     }
                   />
                 </span>
