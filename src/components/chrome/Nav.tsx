@@ -115,7 +115,9 @@ export function Nav() {
               }`}
             />
           </span>
-          <span className="btn-link">Menu</span>
+          <span className="font-display text-xs font-medium uppercase tracking-[0.14em] text-white">
+            Menu
+          </span>
         </button>
 
         <Link

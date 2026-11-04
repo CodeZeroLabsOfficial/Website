@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Cta } from "@/components/sections/Cta";
 import { Faq } from "@/components/sections/Faq";
 import { Hero } from "@/components/sections/Hero";
-import { PersonaTour } from "@/components/sections/PersonaTour";
+import { Operators } from "@/components/sections/Operators";
 import { Showcase } from "@/components/sections/Showcase";
 import { Testimonials } from "@/components/sections/Testimonials";
 import { meta } from "@/content/pages";
@@ -16,7 +16,7 @@ export default function HomePage() {
   return (
     <>
       <Hero />
-      <PersonaTour />
+      <Operators />
       <Showcase />
       <Testimonials />
       <Faq />

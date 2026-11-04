@@ -55,3 +55,17 @@ export type DispatchProSlide = {
   image: string;
   imageAlt: string;
 };
+
+export type OperatorSegment = {
+  slug: "solo" | "fleet" | "enterprise";
+  title: string;
+  body: string;
+  cta: string;
+  href: string;
+  image: string;
+  imageAlt: string;
+  highlights: string[];
+  planLabel: string;
+  includesFrom?: string;
+  features: string[];
+};
