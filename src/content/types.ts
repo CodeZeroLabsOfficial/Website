@@ -5,12 +5,6 @@ export type FaqItem = {
   answer: string;
 };
 
-export type FeatureItem = {
-  title: string;
-  body: string;
-  icon: IconName;
-};
-
 export type FeatureJump = {
   label: string;
   href: string;
@@ -52,4 +46,10 @@ export type SectionCopy = {
   eyebrow?: string;
   title: string;
   body?: string;
+};
+
+export type DispatchProSlide = {
+  label: string;
+  image: string;
+  imageAlt: string;
 };

@@ -1,9 +1,9 @@
 import type { IconName } from "@/components/ui/Icon";
 import { SUPPORT_EMAIL } from "@/content/site";
 import type {
+  DispatchProSlide,
   FaqItem,
   FeatureChapter,
-  FeatureItem,
   FeatureJump,
   Persona,
   Testimonial,
@@ -173,40 +173,30 @@ export const copy = {
   },
   platform: {
     eyebrow: "The platform",
-    title: "One system for every seat in the fleet",
+    title: "Everything You Need To Run Your Luxury Transport Operations",
     body: "Passenger, driver, and dispatch experiences built to work together — not stitched on later.",
-    items: [
+    image: "/img/platform-dispatch.jpg",
+    imageAlt: "Dispatch board with active trips and a live map",
+  },
+  dispatchPro: {
+    title: "Dispatch Like A Pro",
+    slides: [
       {
-        title: "Smart dispatch",
-        body: "Auto-assign the nearest available chauffeur with live traffic-aware routing.",
-        icon: "route" as IconName,
+        label: "Booking",
+        image: "/img/dispatch-pro-booking.jpg",
+        imageAlt: "Bookings board with upcoming trips and statuses",
       },
       {
-        title: "Flight tracking",
-        body: "Pickups adjust automatically to real-time flight delays and gate changes.",
-        icon: "clock" as IconName,
+        label: "Clients",
+        image: "/img/dispatch-pro-clients.jpg",
+        imageAlt: "Client directory with account details",
       },
       {
-        title: "Account billing",
-        body: "Corporate accounts, cost centers, and itemized monthly invoicing.",
-        icon: "card" as IconName,
+        label: "Dispatch",
+        image: "/img/dispatch-pro-dispatch.jpg",
+        imageAlt: "Dispatch board with active trips and a live map",
       },
-      {
-        title: "Vetted drivers",
-        body: "Onboarding, licensing, and background checks tracked in one place.",
-        icon: "shield" as IconName,
-      },
-      {
-        title: "5-star experience",
-        body: "In-ride preferences, climate, music, and refreshments saved per client.",
-        icon: "star" as IconName,
-      },
-      {
-        title: "24/7 concierge",
-        body: "In-app support and ride changes handled around the clock.",
-        icon: "phone" as IconName,
-      },
-    ] satisfies FeatureItem[],
+    ] satisfies DispatchProSlide[],
   },
   features: {
     eyebrow: "Built for the fleet",
