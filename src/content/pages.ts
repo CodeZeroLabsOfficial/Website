@@ -29,6 +29,11 @@ export const meta = {
     title: "Support — Depesch",
     description: `Get help with Depesch dispatch, driver apps, and account billing. Contact ${SUPPORT_EMAIL}.`,
   },
+  strategyCall: {
+    title: "Book a Strategy Call — Depesch",
+    description:
+      "A free 30-minute strategy call to see if Depesch fits your luxury transfer operation.",
+  },
 } as const;
 
 export const copy = {
@@ -397,7 +402,9 @@ export const copy = {
   },
   cta: {
     title: "Ready to Own the Luxury Transfer Experience?",
-    body: "See Depesch in action with a personalized walkthrough.",
+    body: "Book a free strategy call to see if you’re driving the platform or playing Tetris to fit luxury into a rigid box.",
+    button: "Book a Strategy Call",
+    href: "/strategy-call",
   },
   support: {
     eyebrow: "Support",

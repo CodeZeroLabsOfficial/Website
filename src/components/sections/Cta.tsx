@@ -1,4 +1,4 @@
-import { DemoButton } from "@/components/demo/DemoButton";
+import Link from "next/link";
 import { Reveal } from "@/components/ui/Reveal";
 import { Container } from "@/components/ui/Container";
 import { SectionHeader } from "@/components/ui/SectionHeader";
@@ -49,10 +49,13 @@ export function Cta() {
             align="center"
           />
           <div className="mt-9 flex justify-center">
-            <DemoButton className="group hover:bg-white">
-              Request a Demo
+            <Link
+              href={copy.cta.href}
+              className="btn btn-accent btn-lg group gap-3 hover:bg-white"
+            >
+              {copy.cta.button}
               <ArrowChase />
-            </DemoButton>
+            </Link>
           </div>
         </Reveal>
       </Container>
