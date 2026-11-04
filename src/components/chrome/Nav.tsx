@@ -3,6 +3,7 @@
 import { useEffect, useState, type MouseEvent } from "react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
+import { motion, useReducedMotion } from "framer-motion";
 import { Logo } from "@/components/chrome/Logo";
 import { DemoButton } from "@/components/demo/DemoButton";
 import { insetClass } from "@/components/ui/Container";
@@ -12,10 +13,18 @@ import { lockScroll, unlockScroll } from "@/lib/scroll-lock";
 const linkClass = "btn-link";
 
 const NAV_DELAY = 280;
+const MENU_STAGGER = 0.06;
+const MENU_SPRING = {
+  type: "spring" as const,
+  stiffness: 210,
+  damping: 30,
+  mass: 1,
+};
 
 export function Nav() {
   const pathname = usePathname();
   const router = useRouter();
+  const reduceMotion = useReducedMotion();
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const isHome = pathname === "/";
@@ -76,7 +85,7 @@ export function Nav() {
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-[background-color,border-color,backdrop-filter] duration-300 ${
         open
-          ? "bg-ink"
+          ? "bg-ink border-b border-ink-3/60"
           : frosted
             ? "bg-ink/85 backdrop-blur-md border-b border-ink-3/60"
             : "bg-transparent border-b border-transparent"
@@ -90,19 +99,19 @@ export function Nav() {
           onClick={() => setOpen((o) => !o)}
           className="group flex items-center gap-3"
         >
-          <span className="flex h-10 w-8 flex-col items-start justify-center gap-1.5">
+          <span className="relative block h-10 w-8">
             <span
-              className={`h-[1.5px] w-5 bg-white transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] ${
+              className={`absolute left-1/2 top-1/2 h-[1.5px] w-5 bg-white transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] ${
                 open
-                  ? "translate-y-[3.5px] rotate-45"
-                  : "group-hover:translate-x-1"
+                  ? "-translate-x-1/2 -translate-y-1/2 rotate-45"
+                  : "-translate-y-[4.5px] translate-x-[calc(-50%+0.25rem)] group-hover:-translate-x-1/2"
               }`}
             />
             <span
-              className={`h-[1.5px] w-5 bg-white transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] ${
+              className={`absolute left-1/2 top-1/2 h-[1.5px] w-5 bg-white transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] ${
                 open
-                  ? "-translate-y-[3.5px] -rotate-45"
-                  : "group-hover:-translate-x-1"
+                  ? "-translate-x-1/2 -translate-y-1/2 -rotate-45"
+                  : "translate-y-[3px] translate-x-[calc(-50%-0.25rem)] group-hover:-translate-x-1/2"
               }`}
             />
           </span>
@@ -159,9 +168,40 @@ export function Nav() {
       >
         <div className="overflow-hidden">
           <div className={`flex flex-col gap-10 py-8 md:py-10 ${insetClass}`}>
-            <ul className="flex flex-col gap-3 md:gap-4">
+            <motion.ul
+              className="flex flex-col gap-3 md:gap-4"
+              initial={false}
+              animate={open ? "open" : "closed"}
+              variants={{
+                open: {
+                  transition: {
+                    staggerChildren: reduceMotion ? 0 : MENU_STAGGER,
+                  },
+                },
+                closed: {
+                  transition: {
+                    staggerChildren: reduceMotion ? 0 : MENU_STAGGER,
+                    staggerDirection: -1,
+                  },
+                },
+              }}
+            >
               {siteNav.map((item) => (
-                <li key={item.href}>
+                <motion.li
+                  key={item.href}
+                  variants={{
+                    open: {
+                      opacity: 1,
+                      y: 0,
+                      transition: reduceMotion ? { duration: 0 } : MENU_SPRING,
+                    },
+                    closed: {
+                      opacity: 0,
+                      y: reduceMotion ? 0 : -40,
+                      transition: reduceMotion ? { duration: 0 } : MENU_SPRING,
+                    },
+                  }}
+                >
                   <Link
                     href={item.href}
                     onClick={(e) => go(item.href, e)}
@@ -169,9 +209,9 @@ export function Nav() {
                   >
                     {item.label}
                   </Link>
-                </li>
+                </motion.li>
               ))}
-            </ul>
+            </motion.ul>
 
             <div className="flex flex-col justify-between gap-6 border-t border-ink-3/60 pt-6 sm:flex-row sm:items-end">
               <div>
