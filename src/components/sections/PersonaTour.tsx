@@ -120,7 +120,7 @@ function PersonaBand({
 
 export function PersonaTour() {
   return (
-    <section id="positioning" className="section stack">
+    <section id="positioning" className="stack pt-24 pb-[70px] md:pt-32">
       {copy.personas.map((persona, index) => (
         <Container key={persona.eyebrow}>
           <PersonaBand
