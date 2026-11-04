@@ -24,8 +24,8 @@ export function Platform() {
           <Image
             src={platform.image}
             alt={platform.imageAlt}
-            width={1152}
-            height={864}
+            width={1280}
+            height={720}
             priority
             sizes="(max-width: 1280px) 100vw, 1280px"
             className="h-auto w-full"

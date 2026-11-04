@@ -173,7 +173,7 @@ export const copy = {
   },
   platform: {
     eyebrow: "The platform",
-    title: "Everything You Need To Run Your Luxury Transport Operations",
+    title: "Everything You Need To Run Your Luxury Operations",
     body: "Passenger, driver, and dispatch experiences built to work together — not stitched on later.",
     image: "/img/platform-dispatch.jpg",
     imageAlt: "Dispatch board with active trips and a live map",
