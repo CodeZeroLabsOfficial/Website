@@ -84,6 +84,7 @@ export const copy = {
           label: "Dedicated driver app with job management",
           frame: "Driver app",
           icon: "device" as IconName,
+          image: "/img/driver-app-jobs.png",
         },
         {
           label: "Live status updates with turn-by-turn navigation",
