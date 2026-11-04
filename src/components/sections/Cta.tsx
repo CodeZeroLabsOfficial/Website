@@ -1,41 +1,9 @@
-import Link from "next/link";
+import { StrategyCallButton } from "@/components/strategy/StrategyCallButton";
+import { ArrowChase } from "@/components/ui/ArrowChase";
 import { Reveal } from "@/components/ui/Reveal";
 import { Container } from "@/components/ui/Container";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { copy } from "@/content/pages";
-
-function ArrowChase() {
-  return (
-    <span className="relative inline-block h-3 w-3 overflow-hidden" aria-hidden>
-      <svg
-        viewBox="0 0 12 12"
-        className="absolute inset-0 h-3 w-3 transition-transform duration-300 ease-out motion-safe:group-hover:translate-x-full"
-        fill="none"
-      >
-        <path
-          d="M2.5 6h7M6.5 3.5 9.5 6l-3 2.5"
-          stroke="currentColor"
-          strokeWidth="1.2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-      </svg>
-      <svg
-        viewBox="0 0 12 12"
-        className="absolute inset-0 h-3 w-3 -translate-x-full transition-transform duration-300 ease-out motion-safe:group-hover:translate-x-0"
-        fill="none"
-      >
-        <path
-          d="M2.5 6h7M6.5 3.5 9.5 6l-3 2.5"
-          stroke="currentColor"
-          strokeWidth="1.2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-      </svg>
-    </span>
-  );
-}
 
 export function Cta() {
   return (
@@ -49,13 +17,10 @@ export function Cta() {
             align="center"
           />
           <div className="mt-9 flex justify-center">
-            <Link
-              href={copy.cta.href}
-              className="btn btn-accent btn-lg group gap-3 hover:bg-white"
-            >
+            <StrategyCallButton className="group">
               {copy.cta.button}
               <ArrowChase />
-            </Link>
+            </StrategyCallButton>
           </div>
         </Reveal>
       </Container>

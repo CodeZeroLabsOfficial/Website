@@ -1,3 +1,5 @@
+import type { KeyboardEventHandler } from "react";
+
 type FieldProps = {
   label: string;
   value: string;
@@ -6,6 +8,10 @@ type FieldProps = {
   type?: string;
   placeholder?: string;
   className?: string;
+  autoFocus?: boolean;
+  /** When false, label stays for a11y but is not shown as a floating chip. */
+  showLabel?: boolean;
+  onKeyDown?: KeyboardEventHandler<HTMLInputElement>;
 };
 
 const labelClass =
@@ -21,10 +27,13 @@ export function Field({
   type = "text",
   placeholder,
   className = "",
+  autoFocus,
+  showLabel = true,
+  onKeyDown,
 }: FieldProps) {
   return (
     <label className={`relative block ${className}`}>
-      <span className={labelClass}>
+      <span className={showLabel ? labelClass : "sr-only"}>
         {label}
         {required ? " *" : ""}
       </span>
@@ -33,8 +42,47 @@ export function Field({
         type={type}
         value={value}
         placeholder={placeholder}
+        autoFocus={autoFocus}
         onChange={(e) => onChange(e.target.value)}
+        onKeyDown={onKeyDown}
         className={controlClass}
+      />
+    </label>
+  );
+}
+
+export function TextAreaField({
+  label,
+  value,
+  onChange,
+  required,
+  placeholder,
+  className = "",
+  rows = 5,
+  showLabel = true,
+}: {
+  label: string;
+  value: string;
+  onChange: (value: string) => void;
+  required?: boolean;
+  placeholder?: string;
+  className?: string;
+  rows?: number;
+  showLabel?: boolean;
+}) {
+  return (
+    <label className={`relative block ${className}`}>
+      <span className={showLabel ? labelClass : "sr-only"}>
+        {label}
+        {required ? " *" : ""}
+      </span>
+      <textarea
+        required={required}
+        value={value}
+        placeholder={placeholder}
+        rows={rows}
+        onChange={(e) => onChange(e.target.value)}
+        className={`${controlClass} resize-y`}
       />
     </label>
   );

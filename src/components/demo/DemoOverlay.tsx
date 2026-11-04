@@ -118,16 +118,14 @@ export function DemoOverlay() {
           <div className="mx-auto w-full max-w-[920px] px-5 py-20 md:px-8 md:py-24">
             {submitted ? (
               <div className="py-24 text-center">
-                <h2 className="heading">We’ll be in touch shortly.</h2>
+                <h2 className="font-display text-[1.65rem] font-semibold leading-tight tracking-normal text-white sm:text-[2rem]">
+                  We’ll be in touch shortly.
+                </h2>
                 <p className="lead mx-auto mt-4 max-w-md">
                   Thanks for requesting a demo. A member of the Depesch team will
                   reach out to schedule a walkthrough.
                 </p>
-                <Button
-                  size="lg"
-                  className="mt-10"
-                  onClick={closeDemo}
-                >
+                <Button className="mt-10" onClick={closeDemo}>
                   Close
                 </Button>
               </div>
@@ -135,7 +133,7 @@ export function DemoOverlay() {
               <form onSubmit={onSubmit} className="flex flex-col gap-10">
                 <h2
                   id="demo-title"
-                  className="heading text-center text-[1.65rem] sm:text-[2rem]"
+                  className="text-center font-display text-[1.65rem] font-semibold leading-tight tracking-normal text-white sm:text-[2rem]"
                 >
                   Let us show you how Depesch can impact your business
                 </h2>
@@ -324,7 +322,7 @@ export function DemoOverlay() {
                 </fieldset>
 
                 <div className="flex justify-center pt-2">
-                  <Button type="submit" size="lg" className="gap-3">
+                  <Button type="submit" className="group">
                     Request a Demo
                     <span aria-hidden>→</span>
                   </Button>
