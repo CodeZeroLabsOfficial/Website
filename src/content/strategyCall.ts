@@ -71,18 +71,6 @@ export const strategyCall = {
     { id: "integrations", label: "Integrations" },
     { id: "custom-workflows", label: "Custom workflows" },
   ],
-  tools: [
-    { id: "limo-anywhere", label: "Limo Anywhere" },
-    { id: "moovs", label: "Moovs" },
-    { id: "rideminder", label: "RideMinder" },
-    { id: "groundspan", label: "Groundspan" },
-    { id: "flightbridge", label: "Flightbridge" },
-    { id: "autocab", label: "Autocab" },
-    { id: "icabbi", label: "iCabbi" },
-    { id: "spreadsheets", label: "Spreadsheets / WhatsApp" },
-    { id: "custom", label: "Custom / in-house" },
-    { id: "other", label: "Other / not sure" },
-  ],
   countryOptions: countries,
   segments: [
     ...segments.map(({ id, label }) => ({ id, label })),

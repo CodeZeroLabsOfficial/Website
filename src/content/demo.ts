@@ -26,7 +26,7 @@ export const findUsOptions = [
   "Other",
 ];
 
-export const amenities = [
+export const features = [
   { id: "airport-pickup", label: "Airport pickup" },
   { id: "hourly", label: "Hourly charter" },
   { id: "point-to-point", label: "Point-to-point" },
@@ -38,17 +38,53 @@ export const amenities = [
   { id: "other", label: "Other" },
 ] as const;
 
-export const dispatchTools = [
-  "Groundspan",
-  "Limo Anywhere",
+/** Named platforms A–Z, then the catch-all answers. Shared by both lead forms. */
+export const dispatchPlatforms = [
+  "Autocab",
+  "Cab9",
+  "CMT",
+  "Cordic",
+  "FASTTRAK",
   "Flightbridge",
-  "Spreadsheets / none",
+  "Groundspan",
+  "iCabbi",
+  "Limo Anywhere",
+  "LimoSys",
+  "Livery Coach",
+  "Moovs",
+  "Onde",
+  "RideMinder",
+  "TaxiCaller",
+  "Spreadsheets",
+  "None",
   "Other",
 ];
 
-export const accountingTools = ["Xero", "QuickBooks", "Sage", "Other / none"];
-
-export const flightDataTools = ["FlightAware", "OAG", "None", "Not sure"];
+/** Named platforms A–Z, then the catch-all answers. */
+export const accountingTools = [
+  "Bexio",
+  "Cegid",
+  "Datev",
+  "e-conomic",
+  "Exact",
+  "Fortnox",
+  "FreeAgent",
+  "Holded",
+  "Lexware",
+  "Moneybird",
+  "NetSuite",
+  "Odoo",
+  "Pennylane",
+  "QuickBooks",
+  "Sage",
+  "sevDesk",
+  "Visma",
+  "Xero",
+  "Zoho Books",
+  "Spreadsheets",
+  "None",
+  "Other",
+];
 
 export const bookingChannels = [
   { id: "direct-app", label: "Direct app" },

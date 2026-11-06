@@ -7,6 +7,8 @@ import { ArrowChase } from "@/components/ui/ArrowChase";
 import { Button } from "@/components/ui/Button";
 import { Field, TextAreaField } from "@/components/ui/Field";
 import { MultiSelectField } from "@/components/ui/MultiSelectField";
+import { SearchSelectField } from "@/components/ui/SearchSelectField";
+import { dispatchPlatforms } from "@/content/demo";
 import { strategyCall } from "@/content/strategyCall";
 import { submitLead } from "@/lib/leads";
 import { STEP_EASE } from "@/lib/motion";
@@ -117,8 +119,7 @@ export function StrategyCallWizard({ onClose }: { onClose: () => void }) {
           (id) => strategyCall.bottlenecks.find((item) => item.id === id)?.label ?? id,
         )
         .join(", ");
-      const tools =
-        strategyCall.tools.find((item) => item.id === answers.tools)?.label ?? answers.tools;
+      const dispatchPlatform = answers.tools;
       const result = await submitLead({
         form: "strategy-call",
         name: answers.firstName.trim(),
@@ -126,9 +127,9 @@ export function StrategyCallWizard({ onClose }: { onClose: () => void }) {
         fields: {
           segment,
           fleetSize: answers.fleetSize,
-          countries: answers.countries.join(", "),
+          location: answers.countries.join(", "),
           bottleneck,
-          tools,
+          dispatchPlatform,
           goals: answers.goals.trim(),
         },
         pageUrl: window.location.href,
@@ -540,19 +541,18 @@ function QuestionStep({
         ) : null}
 
         {step === 6 ? (
-          <StepBlock title={s.tools.title} wide>
-            <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
-              {strategyCall.tools.map((item) => (
-                <ChoiceRow
-                  key={item.id}
-                  label={item.label}
-                  selected={answers.tools === item.id}
-                  onClick={() => setField("tools", item.id)}
-                  endAffordance={false}
-                  radio
-                />
-              ))}
-            </div>
+          <StepBlock title={s.tools.title}>
+            <SearchSelectField
+              label="Current dispatch platform"
+              showLabel={false}
+              value={answers.tools}
+              onChange={(v) => setField("tools", v)}
+              options={dispatchPlatforms}
+              placeholder="Select a platform"
+              searchPlaceholder="Search platforms…"
+              emptyMessage="No platforms match"
+              autoFocus
+            />
           </StepBlock>
         ) : null}
 

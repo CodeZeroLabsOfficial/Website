@@ -4,15 +4,17 @@ import { useEffect, useState, type FormEvent, type ReactNode } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { useDemo } from "@/components/demo/DemoProvider";
 import { Button } from "@/components/ui/Button";
+import { countries } from "@/content/countries";
 import { Field, SelectField } from "@/components/ui/Field";
+import { MultiSelectField } from "@/components/ui/MultiSelectField";
+import { SearchSelectField } from "@/components/ui/SearchSelectField";
 import {
   accountingTools,
-  amenities,
+  features,
   bookingChannels,
-  dispatchTools,
+  dispatchPlatforms,
   findUsOptions,
   fleetSizes,
-  flightDataTools,
   roles,
   segments,
 } from "@/content/demo";
@@ -30,13 +32,12 @@ const emptyForm = {
   website: "",
   role: "",
   fleetSize: "",
-  location: "",
+  location: [] as string[],
   findUs: "",
   launchDate: "",
-  amenities: [] as string[],
+  features: [] as string[],
   dispatchTool: "",
   accounting: "",
-  flightData: "",
   bookingChannels: [] as string[],
 };
 
@@ -49,6 +50,9 @@ export function DemoOverlay() {
   const [submitError, setSubmitError] = useState<string | null>(null);
   const [amenityError, setAmenityError] = useState(false);
   const [segmentError, setSegmentError] = useState(false);
+  const [dispatchError, setDispatchError] = useState(false);
+  const [accountingError, setAccountingError] = useState(false);
+  const [locationError, setLocationError] = useState(false);
 
   useEffect(() => {
     if (!demoOpen) return;
@@ -70,6 +74,9 @@ export function DemoOverlay() {
         setSubmitError(null);
         setAmenityError(false);
         setSegmentError(false);
+        setDispatchError(false);
+        setAccountingError(false);
+        setLocationError(false);
       }, 400);
       return () => window.clearTimeout(id);
     }
@@ -86,44 +93,54 @@ export function DemoOverlay() {
       setSegmentError(true);
       return;
     }
-    if (form.amenities.length === 0) {
+    if (form.features.length === 0) {
       setAmenityError(true);
+      return;
+    }
+    if (!form.dispatchTool) {
+      setDispatchError(true);
+      return;
+    }
+    if (form.location.length === 0) {
+      setLocationError(true);
+      return;
+    }
+    if (!form.accounting) {
+      setAccountingError(true);
       return;
     }
     setAmenityError(false);
     setSegmentError(false);
+    setDispatchError(false);
+    setAccountingError(false);
+    setLocationError(false);
     setSubmitting(true);
     setSubmitError(null);
     const segment =
       segments.find((item) => item.id === form.segment)?.label ?? form.segment;
-    const amenityLabels = form.amenities
-      .map((id) => amenities.find((item) => item.id === id)?.label ?? id)
+    const featureLabels = form.features
+      .map((id) => features.find((item) => item.id === id)?.label ?? id)
       .join(", ");
     const channelLabels = form.bookingChannels
       .map((id) => bookingChannels.find((item) => item.id === id)?.label ?? id)
       .join(", ");
-    const techStack = [
-      form.dispatchTool ? `Dispatch: ${form.dispatchTool}` : "",
-      form.accounting ? `Accounting: ${form.accounting}` : "",
-      form.flightData ? `Flight data: ${form.flightData}` : "",
-    ]
-      .filter(Boolean)
-      .join("; ");
+    const location = form.location.join(", ");
     const result = await submitLead({
       form: "demo",
       name: `${form.firstName} ${form.lastName}`.trim(),
       email: form.email.trim(),
       phone: form.phone.trim(),
-      country: form.location.trim(),
+      country: location,
       fields: {
         segment,
         fleetSize: form.fleetSize,
-        amenities: amenityLabels,
-        techStack,
+        features: featureLabels,
+        dispatchPlatform: form.dispatchTool,
+        accountingPlatform: form.accounting,
         bookingChannels: channelLabels,
         company: form.company.trim(),
         role: form.role,
-        location: form.location.trim(),
+        location,
         website: form.website.trim(),
         findUs: form.findUs,
         launchDate: form.launchDate,
@@ -271,13 +288,23 @@ export function DemoOverlay() {
                     onChange={(v) => setForm((f) => ({ ...f, fleetSize: v }))}
                     options={fleetSizes}
                   />
-                  <Field
-                    label="Country / location"
-                    required
-                    value={form.location}
-                    onChange={(v) => setForm((f) => ({ ...f, location: v }))}
-                    placeholder="City, country"
-                  />
+                  <div>
+                    <MultiSelectField
+                      label="Country / location"
+                      value={form.location}
+                      onChange={(v) => {
+                        setLocationError(false);
+                        setForm((f) => ({ ...f, location: v }));
+                      }}
+                      options={countries}
+                      placeholder="Select countries"
+                      searchPlaceholder="Search countries…"
+                      emptyMessage="No countries match"
+                    />
+                    {locationError ? (
+                      <p className="mt-2 text-sm text-red-400">This field is required</p>
+                    ) : null}
+                  </div>
                   <SelectField
                     label="How did you find us?"
                     required
@@ -297,19 +324,19 @@ export function DemoOverlay() {
 
                 <fieldset>
                   <legend className="mb-4 text-base text-white">
-                    Which services and amenities would you like your guests to
+                    Which services and features would you like your guests to
                     reserve?
                   </legend>
                   <div className="grid gap-3 sm:grid-cols-3">
-                    {amenities.map((item) => (
+                    {features.map((item) => (
                       <ChoiceCard
                         key={item.id}
-                        selected={form.amenities.includes(item.id)}
+                        selected={form.features.includes(item.id)}
                         onClick={() => {
                           setAmenityError(false);
                           setForm((f) => ({
                             ...f,
-                            amenities: toggle(f.amenities, item.id),
+                            features: toggle(f.features, item.id),
                           }));
                         }}
                         label={item.label}
@@ -323,35 +350,49 @@ export function DemoOverlay() {
                   ) : null}
                 </fieldset>
 
-                <fieldset className="flex flex-col gap-5">
-                  <legend className="mb-1 text-base text-white">
+                <fieldset>
+                  <legend className="mb-6 text-base text-white">
                     Current technology stack
                   </legend>
-                  <div className="grid gap-5 sm:grid-cols-2">
-                    <SelectField
-                      label="Current dispatch tool"
-                      required
-                      value={form.dispatchTool}
-                      onChange={(v) => setForm((f) => ({ ...f, dispatchTool: v }))}
-                      options={dispatchTools}
-                    />
-                    <SelectField
-                      label="Accounting / billing"
-                      required
-                      value={form.accounting}
-                      onChange={(v) => setForm((f) => ({ ...f, accounting: v }))}
-                      options={accountingTools}
-                    />
-                    <SelectField
-                      label="Flight data"
-                      required
-                      value={form.flightData}
-                      onChange={(v) => setForm((f) => ({ ...f, flightData: v }))}
-                      options={flightDataTools}
-                      className="sm:col-span-2"
-                    />
+                  <div className="flex flex-col gap-8">
+                    <div>
+                      <SearchSelectField
+                        label="Current dispatch platform"
+                        required
+                        value={form.dispatchTool}
+                        onChange={(v) => {
+                          setDispatchError(false);
+                          setForm((f) => ({ ...f, dispatchTool: v }));
+                        }}
+                        options={dispatchPlatforms}
+                        placeholder="Select a platform"
+                        searchPlaceholder="Search platforms…"
+                        emptyMessage="No platforms match"
+                      />
+                      {dispatchError ? (
+                        <p className="mt-2 text-sm text-red-400">This field is required</p>
+                      ) : null}
+                    </div>
+                    <div>
+                      <SearchSelectField
+                        label="Current accounting platform"
+                        required
+                        value={form.accounting}
+                        onChange={(v) => {
+                          setAccountingError(false);
+                          setForm((f) => ({ ...f, accounting: v }));
+                        }}
+                        options={accountingTools}
+                        placeholder="Select a platform"
+                        searchPlaceholder="Search platforms…"
+                        emptyMessage="No platforms match"
+                      />
+                      {accountingError ? (
+                        <p className="mt-2 text-sm text-red-400">This field is required</p>
+                      ) : null}
+                    </div>
                   </div>
-                  <p className="text-sm text-mist">Booking channels</p>
+                  <p className="mb-3 mt-8 text-sm text-mist">Booking channels</p>
                   <div className="grid gap-3 sm:grid-cols-3">
                     {bookingChannels.map((item) => (
                       <ChoiceCard
