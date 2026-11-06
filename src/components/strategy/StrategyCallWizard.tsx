@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/Button";
 import { Field, TextAreaField } from "@/components/ui/Field";
 import { MultiSelectField } from "@/components/ui/MultiSelectField";
 import { strategyCall } from "@/content/strategyCall";
+import { submitLead } from "@/lib/leads";
 import { STEP_EASE } from "@/lib/motion";
 
 type Answers = {
@@ -42,6 +43,8 @@ export function StrategyCallWizard({ onClose }: { onClose: () => void }) {
   const [step, setStep] = useState(0);
   const [answers, setAnswers] = useState<Answers>(empty);
   const [error, setError] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
+  const [submitting, setSubmitting] = useState(false);
   const reduce = useReducedMotion();
 
   const progress = useMemo(() => {
@@ -90,7 +93,8 @@ export function StrategyCallWizard({ onClose }: { onClose: () => void }) {
     }
   }
 
-  function goNext() {
+  async function goNext() {
+    if (submitting) return;
     if (phase === "intro") {
       setPhase("questions");
       setStep(0);
@@ -101,6 +105,39 @@ export function StrategyCallWizard({ onClose }: { onClose: () => void }) {
       return;
     }
     if (step >= QUESTION_COUNT - 1) {
+      setSubmitting(true);
+      setSubmitError(null);
+      const segment =
+        answers.segment === "other"
+          ? answers.segmentOther.trim()
+          : (strategyCall.segments.find((item) => item.id === answers.segment)?.label ??
+            answers.segment);
+      const bottleneck = answers.bottleneck
+        .map(
+          (id) => strategyCall.bottlenecks.find((item) => item.id === id)?.label ?? id,
+        )
+        .join(", ");
+      const tools =
+        strategyCall.tools.find((item) => item.id === answers.tools)?.label ?? answers.tools;
+      const result = await submitLead({
+        form: "strategy-call",
+        name: answers.firstName.trim(),
+        email: answers.email.trim(),
+        fields: {
+          segment,
+          fleetSize: answers.fleetSize,
+          countries: answers.countries.join(", "),
+          bottleneck,
+          tools,
+          goals: answers.goals.trim(),
+        },
+        pageUrl: window.location.href,
+      });
+      setSubmitting(false);
+      if (!result.ok) {
+        setSubmitError(result.message);
+        return;
+      }
       setPhase("success");
       return;
     }
@@ -171,6 +208,8 @@ export function StrategyCallWizard({ onClose }: { onClose: () => void }) {
                   step={step}
                   answers={answers}
                   error={error}
+                  submitError={submitError}
+                  submitting={submitting}
                   setField={setField}
                   toggleBottleneck={toggleBottleneck}
                   onContinue={goNext}
@@ -289,6 +328,8 @@ function QuestionStep({
   step,
   answers,
   error,
+  submitError,
+  submitting,
   setField,
   toggleBottleneck,
   onContinue,
@@ -297,6 +338,8 @@ function QuestionStep({
   step: number;
   answers: Answers;
   error: boolean;
+  submitError: string | null;
+  submitting: boolean;
   setField: <K extends keyof Answers>(key: K, value: Answers[K]) => void;
   toggleBottleneck: (id: string) => void;
   onContinue: () => void;
@@ -531,12 +574,18 @@ function QuestionStep({
             {strategyCall.requiredError}
           </p>
         ) : null}
+        {submitError ? (
+          <p className="mx-auto mt-4 max-w-[520px] text-center text-sm text-red-400">
+            {submitError}
+          </p>
+        ) : null}
       </div>
 
       <div className="mx-auto mt-10 w-full max-w-[520px]">
         <Button
-          className={`group w-full ${canContinue ? "" : "opacity-40"}`}
+          className={`group w-full ${canContinue && !submitting ? "" : "opacity-40"}`}
           onClick={onContinue}
+          disabled={submitting}
         >
           {strategyCall.continue}
           <span aria-hidden>{strategyCall.continueArrow}</span>

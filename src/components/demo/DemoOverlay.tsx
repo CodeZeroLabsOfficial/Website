@@ -16,6 +16,7 @@ import {
   roles,
   segments,
 } from "@/content/demo";
+import { submitLead } from "@/lib/leads";
 import { EASE } from "@/lib/motion";
 import { lockScroll, unlockScroll } from "@/lib/scroll-lock";
 
@@ -44,6 +45,8 @@ export function DemoOverlay() {
   const reduce = useReducedMotion();
   const [form, setForm] = useState(emptyForm);
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
   const [amenityError, setAmenityError] = useState(false);
   const [segmentError, setSegmentError] = useState(false);
 
@@ -64,6 +67,7 @@ export function DemoOverlay() {
     if (!demoOpen) {
       const id = window.setTimeout(() => {
         setSubmitted(false);
+        setSubmitError(null);
         setAmenityError(false);
         setSegmentError(false);
       }, 400);
@@ -75,8 +79,9 @@ export function DemoOverlay() {
     return list.includes(id) ? list.filter((x) => x !== id) : [...list, id];
   }
 
-  function onSubmit(e: FormEvent) {
+  async function onSubmit(e: FormEvent) {
     e.preventDefault();
+    if (submitting) return;
     if (!form.segment) {
       setSegmentError(true);
       return;
@@ -87,6 +92,49 @@ export function DemoOverlay() {
     }
     setAmenityError(false);
     setSegmentError(false);
+    setSubmitting(true);
+    setSubmitError(null);
+    const segment =
+      segments.find((item) => item.id === form.segment)?.label ?? form.segment;
+    const amenityLabels = form.amenities
+      .map((id) => amenities.find((item) => item.id === id)?.label ?? id)
+      .join(", ");
+    const channelLabels = form.bookingChannels
+      .map((id) => bookingChannels.find((item) => item.id === id)?.label ?? id)
+      .join(", ");
+    const techStack = [
+      form.dispatchTool ? `Dispatch: ${form.dispatchTool}` : "",
+      form.accounting ? `Accounting: ${form.accounting}` : "",
+      form.flightData ? `Flight data: ${form.flightData}` : "",
+    ]
+      .filter(Boolean)
+      .join("; ");
+    const result = await submitLead({
+      form: "demo",
+      name: `${form.firstName} ${form.lastName}`.trim(),
+      email: form.email.trim(),
+      phone: form.phone.trim(),
+      country: form.location.trim(),
+      fields: {
+        segment,
+        fleetSize: form.fleetSize,
+        amenities: amenityLabels,
+        techStack,
+        bookingChannels: channelLabels,
+        company: form.company.trim(),
+        role: form.role,
+        location: form.location.trim(),
+        website: form.website.trim(),
+        findUs: form.findUs,
+        launchDate: form.launchDate,
+      },
+      pageUrl: window.location.href,
+    });
+    setSubmitting(false);
+    if (!result.ok) {
+      setSubmitError(result.message);
+      return;
+    }
     setSubmitted(true);
   }
 
@@ -321,9 +369,12 @@ export function DemoOverlay() {
                   </div>
                 </fieldset>
 
+                {submitError ? (
+                  <p className="text-center text-sm text-red-400">{submitError}</p>
+                ) : null}
                 <div className="flex justify-center pt-2">
-                  <Button type="submit" className="group">
-                    Request a Demo
+                  <Button type="submit" className="group" disabled={submitting}>
+                    {submitting ? "Sending…" : "Request a Demo"}
                     <span aria-hidden>→</span>
                   </Button>
                 </div>
