@@ -340,6 +340,11 @@ body {
   flex-shrink: 0;
   transition: transform 0.3s ease;
 }
+.jump-link-arrow-track {
+  display: inline-flex;
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+}
 @media (hover: hover) {
   .jump-link:hover::after {
     opacity: 1;
@@ -348,10 +353,20 @@ body {
   .jump-link:hover .jump-link-arrow {
     transform: rotate(135deg);
   }
+  .jump-link-forward .jump-link-arrow,
+  .jump-link-forward:hover .jump-link-arrow {
+    transform: rotate(45deg);
+  }
+  .jump-link-forward:hover .jump-link-arrow-track {
+    transform: translateX(0.25rem);
+  }
 }
 @media (hover: none) {
   .jump-link-arrow {
     transform: rotate(135deg);
+  }
+  .jump-link-forward .jump-link-arrow {
+    transform: rotate(45deg);
   }
 }
 @keyframes jump-line-sweep {

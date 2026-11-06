@@ -8,6 +8,7 @@ export function SectionHeader({
   align = "start",
   pulse,
   className = "",
+  bodyClassName,
 }: {
   eyebrow?: string;
   title: string;
@@ -16,8 +17,11 @@ export function SectionHeader({
   align?: "start" | "center";
   pulse?: boolean;
   className?: string;
+  bodyClassName?: string;
 }) {
   const alignClass = align === "center" ? "text-center" : "";
+  const bodyMeasure =
+    bodyClassName ?? (align === "center" ? "mx-auto max-w-xl" : "");
   return (
     <div className={`${alignClass} ${className}`.trim()}>
       {eyebrow ? (
@@ -41,9 +45,7 @@ export function SectionHeader({
       </TitleTag>
       {body ? (
         <p
-          className={`lead ${eyebrow || title ? "mt-5" : ""} ${
-            align === "center" ? "mx-auto max-w-xl" : ""
-          }`.trim()}
+          className={`lead ${eyebrow || title ? "mt-5" : ""} ${bodyMeasure}`.trim()}
         >
           {body}
         </p>
