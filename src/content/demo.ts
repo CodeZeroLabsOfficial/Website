@@ -87,10 +87,13 @@ export const accountingTools = [
 ];
 
 export const bookingChannels = [
-  { id: "direct-app", label: "Direct app" },
-  { id: "widget", label: "Website widget" },
-  { id: "hotel", label: "Hotel / concierge feed" },
-  { id: "tmc", label: "Travel management company" },
+  { id: "affiliates", label: "Affiliates" },
+  { id: "corporate-account", label: "Corporate account" },
+  { id: "email", label: "Email" },
+  { id: "mobile-app", label: "Mobile app" },
+  { id: "phone", label: "Phone" },
+  { id: "website", label: "Website" },
+  { id: "whatsapp", label: "WhatsApp / messaging" },
   { id: "not-sure", label: "Not sure" },
   { id: "none", label: "None" },
 ] as const;
