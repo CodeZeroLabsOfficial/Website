@@ -26,15 +26,26 @@ export const findUsOptions = [
   "Other",
 ];
 
-export const features = [
-  { id: "airport-pickup", label: "Airport pickup" },
+/** Trip types a guest can reserve. Posted as labels on the services brief key. */
+export const services = [
+  { id: "airport-transfer", label: "Airport transfer" },
   { id: "hourly", label: "Hourly charter" },
   { id: "point-to-point", label: "Point-to-point" },
-  { id: "meet-greet", label: "Meet & greet" },
+] as const;
+
+/** Platform capabilities. Alphabetical, with Other last. */
+export const platformFeatures = [
+  { id: "accounts-and-billing", label: "Accounts and Billing" },
+  { id: "affiliate", label: "Affiliate and partner jobs" },
+  { id: "analytics", label: "Analytics and reporting" },
+  { id: "auto-dispatch", label: "Auto dispatch" },
+  { id: "compliance", label: "Compliance management" },
+  { id: "corporate-billing", label: "Corporate billing" },
+  { id: "customer-and-driver-apps", label: "Customer and driver apps" },
+  { id: "dynamic-pricing", label: "Dynamic pricing" },
   { id: "flight-tracking", label: "Flight tracking" },
-  { id: "wait-time", label: "Extra wait time" },
-  { id: "child-seats", label: "Child seats" },
-  { id: "corporate", label: "Corporate accounts" },
+  { id: "in-app-messaging", label: "In-app messaging" },
+  { id: "live-gps", label: "Live GPS and ETA" },
   { id: "other", label: "Other" },
 ] as const;
 

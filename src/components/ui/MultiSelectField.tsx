@@ -20,6 +20,9 @@ type MultiSelectFieldProps = {
   className?: string;
   /** When false, label stays for a11y but is not shown as a floating chip. */
   showLabel?: boolean;
+  /** Removable chips for the current selection, drawn above the control. */
+  showValueChips?: boolean;
+  required?: boolean;
   autoFocus?: boolean;
 };
 
@@ -38,6 +41,8 @@ export function MultiSelectField({
   emptyMessage = "No matches",
   className = "",
   showLabel = true,
+  showValueChips = true,
+  required,
   autoFocus,
 }: MultiSelectFieldProps) {
   const id = useId();
@@ -117,9 +122,12 @@ export function MultiSelectField({
 
   return (
     <div ref={rootRef} className={`relative ${className}`}>
-      <span className={showLabel ? labelClass : "sr-only"}>{label}</span>
+      <span className={showLabel ? labelClass : "sr-only"}>
+        {label}
+        {required ? " *" : ""}
+      </span>
 
-      {value.length > 0 ? (
+      {showValueChips && value.length > 0 ? (
         <div className="mb-2 flex flex-wrap gap-1.5">
           {value.map((item) => (
             <button
@@ -141,6 +149,7 @@ export function MultiSelectField({
       <button
         type="button"
         aria-haspopup="listbox"
+        aria-required={required || undefined}
         aria-expanded={open}
         aria-controls={listId}
         autoFocus={autoFocus}
